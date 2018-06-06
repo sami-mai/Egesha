@@ -11,8 +11,9 @@ class DriverProfile(models.Model):
     Profile model class
     '''
     avatar = models.ImageField(upload_to='avatar/', blank=True, null=True)
-    bio = models.TextField(null=True, blank=True)
-    user = models.OneToOneField(User, related_name='driver', on_delete=models.CASCADE)
+    bio = models.TextField(max_length=500, null=True, blank=True)
+    user = models.OneToOneField(User, related_name='driver',
+            on_delete=models.CASCADE, unique=True, null=False, db_index=True)
     join_date = models.DateTimeField(auto_now=True)
 
     def __str__(self):
