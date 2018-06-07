@@ -6,7 +6,8 @@ from accounts import views as account_views
 
 urlpatterns = [
 
-    url(r'^accounts/', include('registration.backends.simple.urls')),
+    url(r'^accounts/', include('registration.backends.simple.urls', namespace='auth')),
+    url(r'^account/', include('social_django.urls', namespace='social')),
     url(r'^accounts/login/$', auth_views.login, name='login'),
     url(r'^logout/$', auth_views.logout, {"next_page": '/'}),
     url(r'^account/(?P<username>[-\w]+)/$', account_views.edit_profile, name='edit_profile'),
