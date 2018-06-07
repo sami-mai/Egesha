@@ -50,8 +50,10 @@ INSTALLED_APPS = [
     'lotManager',
     'lotOwner',
     'bootstrap3',
+    'paypal.standard',
+    'paypal.pro',
 ]
-
+PAYPAL_TEST = True
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
