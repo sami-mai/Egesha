@@ -18,10 +18,12 @@ from django.conf.urls import url
 from django.conf.urls.static import static
 from django.contrib import admin
 from . import views as project_views
+from lotManager import views as guard_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', project_views.landing, name='landing'),
+    url(r'^dashboard/$', guard_views.dashboard, name='dashboard'),
 ]
 
 if settings.DEBUG:
