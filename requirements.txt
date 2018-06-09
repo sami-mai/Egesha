@@ -5,7 +5,6 @@ celery==3.1.26.post2
 dj-database-url==0.5.0
 Django==1.11
 django-bootstrap3==10.0.1
-django-celery==3.2.2
 GDAL==2.3.0
 gunicorn==19.8.1
 kombu==3.0.37
