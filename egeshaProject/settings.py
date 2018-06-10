@@ -94,10 +94,10 @@ WSGI_APPLICATION = 'egeshaProject.wsgi.application'
 
 DATABASES = {
     'default': {
-          'ENGINE': config('DB_ENGINE'),
-          'NAME': config('DB_NAME'),
-          'USER': config('DB_USER'),
-          'PASSWORD': config('DB_PASSWORD'),
+          'ENGINE': 'django.db.backends.postgresql',
+          'NAME':'owner' ,
+          'USER':'maryanne' ,
+          'PASSWORD':'1234@5' ,
           }
 }
 db_from_env = dj_database_url.config(conn_max_age=500)
