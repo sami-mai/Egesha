@@ -2,4 +2,3 @@ db.sqlite3
 virtual/
 *.pyc
 .env
-settings.py
