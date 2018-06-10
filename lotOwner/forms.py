@@ -15,4 +15,4 @@ class LocationForm(forms.ModelForm):
     '''
     class Meta:
         model=Location
-        fields=('name_of_location','latitude','longitude')
+        fields=('name_of_location','latitude','longitude','Lot')

@@ -8,7 +8,15 @@ def home(request,profile_id):
     current_profile=OwnerProfile.objects.get(id=profile_id)
     title='Welcome lot owner'
     lots=LotDetails.objects.filter(owner=current_profile)
-    return render (request,'Lot/home.html',{"title":title,"lots":lots,"current_profile":current_profile})
+    if request.method == 'POST':
+        form=LocationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect (home,current_profile.id)
+    else:
+        form=LocationForm()
+
+    return render (request,'Lot/home.html',{"title":title,"lots":lots,"current_profile":current_profile,"form":form})
 def Lotdetail(request,profile_id):
     current_profile=OwnerProfile.objects.get(id=profile_id)
 
@@ -21,4 +29,5 @@ def Lotdetail(request,profile_id):
             return redirect (home,current_profile.id)
     else:
         form=LotDetailsForm()
-    return render(request,'Lot/details.html',{"form":form,"current_profile":current_profile})
+
+    return render(request,'Lot/details.html',{"form":form,"current_profile":current_profile,"form1":form1})

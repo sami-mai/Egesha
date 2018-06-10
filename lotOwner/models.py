@@ -10,6 +10,8 @@ class LotDetails(models.Model):
     Image_of_Lot=models.ImageField(upload_to='images/',null=True)
     Total_number_of_spaces=models.IntegerField()
     owner=models.ForeignKey(OwnerProfile,null=True)
+    def __str__(self):
+        return self.Name_of_lot
 class Location(models.Model):
     '''
     We create a location model to store information about the location of the lot

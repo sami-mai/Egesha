@@ -32,6 +32,15 @@
 <hr>
 <div id="map">
       hello</div>
+      <div id="form">
+
+        <form  action="{% url 'Details' current_profile.id %}" method="post" enctype="multipart/form-data">
+           {%csrf_token%}
+
+           {% bootstrap_form form%}
+           <input type="submit" class="btn btn-warning btn-lg" value="Save">
+         </form>
+      </div>
 {% endblock %}
 
 {% block scripts %}

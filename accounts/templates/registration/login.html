@@ -4,11 +4,10 @@
 <div class="container-fluid" style="background-color:black; color: white;">
   <div class="text-center">
     <h1 style="font-family: 'Cookie', cursive;"><strong>
-     <a href="/"><img class="img-circle" src="{% static '/images/download.png' %}" width="30" height="30" alt="icon"></a>
+     <a href="/"><img class=" img-fluid img-rounded" src="{% static '/images/logo.png' %}" width="50" height="50" alt="icon"></a>
      Egesha </strong></h1>
   </div>
 </div>
-<br>
 <br>
 <br>
 <div class="container">
@@ -40,9 +39,9 @@
             </div>
             <hr>
             <a href="{% url 'social:begin' 'google-oauth2' %}?next=/">
-                <img class="img-responsive img-fluid" id="signInButton" src="http://www.setyourowntests.com/_/rsrc/1468869481521/help/accounts/btn_google_signin_dark_normal_web%402x.png" onclick="document.getElementById('signInButton').src='http://www.setyourowntests.com/_/rsrc/1468869481521/help/accounts/btn_google_signin_dark_normal_web%402x.png'">
+                <img class="img-responsive img-thumbnail img-fluid" id="signInButton" src="{%static '/images/google1.png'%}" onclick="document.getElementById('signInButton').src='{%static '/images/google1.png'%}'">
                </a>
-            <a href="{% url 'social:begin' 'google-oauth2' %}">Login with Google</a><br>
+            <!-- <a href="{% url 'social:begin' 'google-oauth2' %}">Login with Google</a><br> -->
             <input type="hidden" name="next" value="/">
 
           </form>
@@ -54,4 +53,4 @@
     <div class="col-md-4"></div>
   </div>
 </div>
-<br><br><br><br><br><br> {% endblock %}
+<br><br> {% endblock %}
