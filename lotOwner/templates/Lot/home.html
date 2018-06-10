@@ -13,6 +13,23 @@
 <div class="container">
 <h1 class="text-center"style="font-family: 'Raleway', sans-serif;">{{title}}</h1>
 </div>
+<div class="container">
+  {% for lot in lots %}
+  <div class="col-md-4 col-sm-6 col-xs-12">
+  <h2 style="font-family: 'Raleway', sans-serif">Name: {{lot.Name_of_lot}}</h2>
+  <h2 style="font-family: 'Raleway', sans-serif">Total spaces: {{lot.Total_number_of_spaces}}</h2>
+  <img src="{{lot.Image_of_Lot.url}}" class="img-responsive"style="" alt="Image">
+</div>
+
+  {% empty %}
+  <ul>
+    <li><h3 style="font-family: 'Raleway', sans-serif">No Lot information Available</h3></li>
+    <li><h3 style="font-family: 'Raleway', sans-serif">To add Information click on the <b>Add Lot details</b> on the navbar</h3>
+  </ul>
+  {% endfor %}
+
+</div>
+<hr>
 {% endblock %}
 
 {% block scripts %}
