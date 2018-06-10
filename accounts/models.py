@@ -12,8 +12,9 @@ class DriverProfile(models.Model):
     '''
     avatar = models.ImageField(upload_to='avatar/', blank=True, null=True)
     bio = models.TextField(max_length=500, null=True, blank=True)
-    user = models.OneToOneField(User, related_name='driver',
-            on_delete=models.CASCADE, unique=True, null=False, db_index=True)
+    user = models.OneToOneField(User, related_name='driver', on_delete=models.CASCADE, unique=True, null=False, db_index=True)
+    phone_number = models.DecimalField(max_digits=30, decimal_places=2, null=True)
+    license = models.DecimalField(max_digits=30, decimal_places=2, null=True)
     join_date = models.DateTimeField(auto_now=True)
 
     def __str__(self):
@@ -58,8 +59,10 @@ class OwnerProfile(models.Model):
     Profile model class
     '''
     avatar = models.ImageField(upload_to='avatar/', blank=True, null=True)
-    bio = models.TextField(null=True, blank=True)
-    user = models.OneToOneField(User, related_name='owner', on_delete=models.CASCADE)
+    bio = models.TextField(max_length=500, null=True, blank=True)
+    user = models.OneToOneField(User, related_name='owner', on_delete=models.CASCADE, unique=True, null=False, db_index=True)
+    phone_number = models.DecimalField(max_digits=30, decimal_places=2, null=True)
+    national_id = models.CharField(max_length=30, null=True)
     join_date = models.DateTimeField(auto_now=True)
 
     def __str__(self):
@@ -83,8 +86,10 @@ class ManagerProfile(models.Model):
     Profile model class
     '''
     avatar = models.ImageField(upload_to='avatar/', blank=True, null=True)
-    bio = models.TextField(null=True, blank=True)
-    user = models.OneToOneField(User, related_name='manager', on_delete=models.CASCADE)
+    bio = models.TextField(max_length=500, null=True, blank=True)
+    user = models.OneToOneField(User, related_name='manager', on_delete=models.CASCADE, unique=True, null=False, db_index=True)
+    phone_number = models.DecimalField(max_digits=30, decimal_places=2, null=True)
+    national_id = models.CharField(max_length=30, null=True)
     join_date = models.DateTimeField(auto_now=True)
 
     def __str__(self):
