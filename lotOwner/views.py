@@ -8,7 +8,7 @@ def home(request,profile_id):
     current_profile=OwnerProfile.objects.get(id=profile_id)
     title='Welcome lot owner'
     lots=LotDetails.objects.filter(owner=current_profile)
-    return render (request,'Lot/home.html',{"title":title,"lots":lots})
+    return render (request,'Lot/home.html',{"title":title,"lots":lots,"current_profile":current_profile})
 def Lotdetail(request,profile_id):
     current_profile=OwnerProfile.objects.get(id=profile_id)
 
