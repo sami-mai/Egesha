@@ -8,8 +8,12 @@ from django.contrib.auth.models import User
 def home(request):
     current_user = request.user.id
     title='Welcome lot owner'
-    current_profile=OwnerProfile.objects.get(id=request.user.id)
-    lots=LotDetails.objects.filter(owner=current_profile)
+    lots = ''
+    current_profile = ''
+    current_user_name=OwnerProfile.objects.filter(id=request.user.id)
+    if current_user_name.exists():
+        current_profile=OwnerProfile.objects.get(id=current_user)
+        lots=LotDetails.objects.filter(owner=current_profile)
     if request.method == 'POST':
         form=LocationForm(request.POST)
         if form.is_valid():
@@ -17,8 +21,14 @@ def home(request):
             return redirect (home,current_profile.id)
     else:
         form=LocationForm()
-
-    return render (request,'Lot/home.html',{"title":title,"lots":lots,"current_profile":current_profile,"form":form})
+    context = {
+        "title":title,
+        "lots":lots,
+        "current_profile":current_profile,
+        "form":form,
+        "current_user": current_user
+    }
+    return render (request,'Lot/home.html', context)
 def Lotdetail(request,profile_id):
     current_profile=OwnerProfile.objects.get(id=profile_id)
 
