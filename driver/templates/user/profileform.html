@@ -1,0 +1,14 @@
+{%extends 'base.html'%} {% block content %}{% load bootstrap3 %} {{form.media}} {% load static %} {% block styles %} {% bootstrap_css %} {% endblock %}
+<div class="container" style="padding-top: 10%">
+    <h1>
+        <strong>Edit Profile</strong>
+    </h1>
+    {{form.media}}
+
+    <form action="{%url 'profileform' %}" method="post" enctype="multipart/form-data">
+        {%csrf_token%} {% bootstrap_form user_form%}{% bootstrap_form driver_form%}
+        <input type="submit" class="btn btn-success btn-lg" value="Post">
+    </form>
+
+
+</div> {%endblock%}

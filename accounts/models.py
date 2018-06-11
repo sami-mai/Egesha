@@ -14,7 +14,7 @@ class DriverProfile(models.Model):
     bio = models.TextField(max_length=500, null=True, blank=True)
     user = models.OneToOneField(User, related_name='driver_profile', on_delete=models.CASCADE, unique=True, null=False, db_index=True)
     phone_number = models.DecimalField(max_digits=30, decimal_places=2, null=True)
-    license = models.DecimalField(max_digits=30, decimal_places=2, null=True)
+    license = models.CharField(max_length = 10,null=True)
     join_date = models.DateTimeField(auto_now=True)
 
     def __str__(self):
