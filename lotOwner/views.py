@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from accounts.models import OwnerProfile
 from .models import LotDetails
-from .forms import LotDetailsForm,LocationForm
+from .forms import LotDetailsForm,LocationForm,OwnerProfileForm
 from django.contrib.auth.models import User
 # Create your views here.
 
@@ -31,7 +31,7 @@ def home(request):
     return render (request,'Lot/home.html', context)
 def Lotdetail(request,profile_id):
     current_profile=OwnerProfile.objects.get(id=profile_id)
-
+    current_user=request.user
     if request.method == 'POST':
         form=LotDetailsForm(request.POST,request.FILES)
         if form.is_valid():
@@ -42,4 +42,4 @@ def Lotdetail(request,profile_id):
     else:
         form=LotDetailsForm()
 
-    return render(request,'Lot/details.html',{"form":form,"current_profile":current_profile,"form1":form1})
+    return render(request,'Lot/details.html',{"form":form,"current_profile":current_profile,"current_user":current_user})
