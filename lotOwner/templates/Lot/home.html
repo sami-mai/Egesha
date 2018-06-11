@@ -14,7 +14,7 @@
 <h1 class="text-center"style="font-family: 'Raleway', sans-serif;">{{title}}</h1>
 </div>
 
-{% if current_profile.avatar%}
+{% if current_profile %}
 <div class="container">
   <img src="{{current_profile.avatar.url}}" class="img-responsive"style="" alt="Image">
 <h2 style="font-family: 'Raleway', sans-serif">Name: {{current_profile.user.username}}</h2>
@@ -27,7 +27,7 @@
    {%csrf_token%}
 
    {% bootstrap_form form1 %}
-   <input type="submit" class="btn btn-warning btn-lg" value="Save">
+   <input type="submit" class="btn btn-warning btn-lg" value="Create profile">
  </form>
 </div>
 {% endif %}
