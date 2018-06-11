@@ -3,11 +3,24 @@ from accounts.models import OwnerProfile
 from .models import LotDetails
 from .forms import LotDetailsForm,LocationForm,OwnerProfileForm
 from django.contrib.auth.models import User
+import googlemaps
 # Create your views here.
 
 def home(request):
+    '''
+
+    '''
+    gmaps=googlemaps.Client(key='AIzaSyBmrKc7FjQwLm9vEtseo5LK7Z6M_1aPm5k')
+
+    results=gmaps.geocode('nairobi')
+
+
+
+    #print(results)
     current_user=request.user.id
     title='Welcome lot owner'
+    lots=''
+    current_profile=''
     current_user_name=OwnerProfile.objects.filter(id=request.user.id)
 
     if current_user_name.exists():
@@ -32,6 +45,8 @@ def home(request):
             return redirect (home,current_profile.id)
     else:
         form1=OwnerProfileForm()
+
+
     return render (request,'Lot/home.html',{"title":title,"lots":lots,"current_profile":current_profile,"form":form,"form1":form1})
 def Lotdetail(request,profile_id):
     current_profile=OwnerProfile.objects.get(id=profile_id)
