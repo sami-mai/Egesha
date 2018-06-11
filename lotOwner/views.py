@@ -8,8 +8,8 @@ from django.contrib.auth.models import User
 def home(request):
     current_user = request.user.id
     title='Welcome lot owner'
-    lots = ''
-    current_profile = ''
+    lots = 'none'
+    current_profile = 'none'
     current_user_name=OwnerProfile.objects.filter(id=request.user.id)
     if current_user_name.exists():
         current_profile=OwnerProfile.objects.get(id=current_user)
