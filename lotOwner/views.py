@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect
 from accounts.models import OwnerProfile
 from .models import LotDetails
 from .forms import LotDetailsForm,LocationForm,OwnerProfileForm
@@ -47,12 +47,12 @@ def Lotdetail(request,profile_id):
     current_profile=OwnerProfile.objects.get(id=profile_id)
     current_user=request.user
     if request.method == 'POST':
-        form=LotDetailsForm(request.POST,request.FILES)
+        form = LotDetailsForm(request.POST,request.FILES)
         if form.is_valid():
-            details=form.save(commit=False)
-            details.owner=current_profile
+            details = form.save(commit=False)
+            details.owner = current_profile
             details.save()
-            return redirect (home,current_profile.id)
+            return redirect(home, current_profile.id)
     else:
         form=LotDetailsForm()
 

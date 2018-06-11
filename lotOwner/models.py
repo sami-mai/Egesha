@@ -1,7 +1,7 @@
 from django.db import models
 from accounts.models import OwnerProfile
 
-# Create your models here.
+
 class LotDetails(models.Model):
     '''
     We create a lot details model to store information about the lot details
@@ -19,7 +19,7 @@ class Location(models.Model):
     '''
     we add a lotdetails  foreignkey to filter the location depending on the lot
     '''
-    name_of_location=models.CharField(max_length=40)
+    name_of_location = models.CharField(max_length=40)
     latitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
     longitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
-    Lot=models.ForeignKey(LotDetails,null=True)
+    Lot = models.ForeignKey(LotDetails, null=True)
