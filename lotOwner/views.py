@@ -2,11 +2,13 @@ from django.shortcuts import render,redirect
 from accounts.models import OwnerProfile
 from .models import LotDetails
 from .forms import LotDetailsForm,LocationForm
+from django.contrib.auth.models import User
 # Create your views here.
 
-def home(request,profile_id):
-    current_profile=OwnerProfile.objects.get(id=profile_id)
+def home(request):
+    current_user=User.objects.get(id=request.user.id)
     title='Welcome lot owner'
+    current_profile=OwnerProfile.objects.get(id=request.user.id)
     lots=LotDetails.objects.filter(owner=current_profile)
     if request.method == 'POST':
         form=LocationForm(request.POST)
