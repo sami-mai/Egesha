@@ -56,12 +56,19 @@
   <a class="anchor" name="driver"></a>
   <div class="row">
     <img style="float:left; width:500px; height:400px;" src="{%static '/images/cash.jpg'%}" alt="earn with egesha">
-    <div class="well" style="background-color: #90AD90; opacity:0.7; width:670px; height:400px; margin-left:500px; ">
+    <div class="well" style="background-color: #D5DFD5; opacity:0.8; width:670px; height:400px; margin-left:500px; ">
       <h1 class="text-center">testing </h1>
       <p>
         It's no secret that parking is a major pain point for drivers but what's not as well-documented is the very real impact parking has on urban mobility. Uninformed drivers create more traffic, pollution and have a negative impact on cities when they search
         for parking.
       </p>
+      {%if user.is_authenticated%}
+      <a href="#" class="btn btn-primary">Park Now</a>
+      <!--  -->
+      {%else%}
+      <a href="{%url 'login'%}" class="btn btn-primary">Get Started</a>
+      <!--  -->
+      {%endif%}
     </div>
   </div>
 </div>
@@ -70,7 +77,7 @@
   <a class="anchor" name="lotOwner"></a>
   <div class="row">
     <img style="float:right; width:500px; height:400px;" src="{%static '/images/undergroundlot.jpg'%}" alt="earn with egesha">
-    <div class="well" style="background-color: #90AD90; opacity:0.7; width:670px; height:400px; margin-right:500px; ">
+    <div class="well" style="background-color: #D5DFD5; opacity:0.8; width:670px; height:400px; margin-right:500px; ">
       <h1 class="text-center">testing </h1>
       <!--  -->
       {%if user.is_authenticated%}
@@ -89,12 +96,19 @@
   <a class="anchor" name="lotManager"></a>
   <div class="row">
     <img style="float:left; width:500px; height:400px;" src="{%static '/images/streetparking.jpg'%}" alt="earn with egesha">
-    <div class="well" style="background-color: #90AD90; opacity:0.7; width:670px; height:400px; margin-left:500px; ">
+    <div class="well" style="background-color: #D5DFD5; opacity:0.8; width:670px; height:400px; margin-left:500px; ">
       <h1 class="text-center">testing </h1>
       <p>
         It's no secret that parking is a major pain point for drivers but what's not as well-documented is the very real impact parking has on urban mobility. Uninformed drivers create more traffic, pollution and have a negative impact on cities when they search
         for parking.
       </p>
+      {%if user.is_authenticated%}
+      <a href="#" class="btn btn-primary">Lot Manager</a>
+      <!--  -->
+      {%else%}
+      <a href="{%url 'login'%}" class="btn btn-primary">Get Started</a>
+      <!--  -->
+      {%endif%}
     </div>
   </div>
 </div>
