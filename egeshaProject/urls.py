@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', project_views.landing, name='landing'),
     url(r'^user/', include('accounts.urls')),
+    url(r'^driver/', include('driver.urls')),
 ]
 
 if settings.DEBUG:
