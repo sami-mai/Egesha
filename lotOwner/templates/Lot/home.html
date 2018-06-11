@@ -23,7 +23,7 @@
 </div>
 {% else %}
 <div class="container">
-<form  action="{% url 'Details' current_profile.id %}" method="post" enctype="multipart/form-data">
+<form  action="{% url 'Lot' %}" method="post" enctype="multipart/form-data">
    {%csrf_token%}
 
    {% bootstrap_form form1 %}
