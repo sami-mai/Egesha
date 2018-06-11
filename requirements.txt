@@ -7,6 +7,7 @@ Django==1.11
 django-bootstrap3==10.0.1
 django-registration==2.4.1
 django-social-auth==0.7.28
+googlemaps==2.5.1
 gunicorn==19.8.1
 httplib2==0.11.3
 idna==2.6
