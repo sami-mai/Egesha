@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 # Create your views here.
 
 def home(request):
-    current_user=User.objects.get(id=request.user.id)
+    current_user = request.user.id
     title='Welcome lot owner'
     current_profile=OwnerProfile.objects.get(id=request.user.id)
     lots=LotDetails.objects.filter(owner=current_profile)
