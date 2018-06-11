@@ -6,10 +6,17 @@ from django.contrib.auth.models import User
 # Create your views here.
 
 def home(request):
-    current_user=User.objects.get(id=request.user.id)
+    current_user=request.user.id
     title='Welcome lot owner'
-    current_profile=OwnerProfile.objects.get(id=request.user.id)
-    lots=LotDetails.objects.filter(owner=current_profile)
+    current_user_name=OwnerProfile.objects.filter(id=request.user.id)
+
+    if current_user_name.exists():
+        current_profile=OwnerProfile.objects.get(id=request.user.id)
+        lots=LotDetails.objects.filter(owner=current_profile)
+
+
+
+
     if request.method == 'POST':
         form=LocationForm(request.POST)
         if form.is_valid():
@@ -21,7 +28,7 @@ def home(request):
     return render (request,'Lot/home.html',{"title":title,"lots":lots,"current_profile":current_profile,"form":form})
 def Lotdetail(request,profile_id):
     current_profile=OwnerProfile.objects.get(id=profile_id)
-
+    current_user=request.user
     if request.method == 'POST':
         form=LotDetailsForm(request.POST,request.FILES)
         if form.is_valid():
@@ -32,4 +39,4 @@ def Lotdetail(request,profile_id):
     else:
         form=LotDetailsForm()
 
-    return render(request,'Lot/details.html',{"form":form,"current_profile":current_profile})
+    return render(request,'Lot/details.html',{"form":form,"current_profile":current_profile,"current_user":current_user})
