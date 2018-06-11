@@ -72,6 +72,14 @@
     <img style="float:right; width:500px; height:400px;" src="{%static '/images/undergroundlot.jpg'%}" alt="earn with egesha">
     <div class="well" style="background-color: #90AD90; opacity:0.7; width:670px; height:400px; margin-right:500px; ">
       <h1 class="text-center">testing </h1>
+      <!--  -->
+      {%if user.is_authenticated%}
+      <a href="{%url 'Lot' request.user.id%}" class="btn btn-primary">Lot Owner</a>
+      <!--  -->
+      {%else%}
+      <a href="{%url 'login'%}" class="btn btn-primary">Get Started</a>
+      <!--  -->
+      {%endif%}
     </div>
   </div>
 
