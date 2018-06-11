@@ -14,6 +14,15 @@
 <h1 class="text-center"style="font-family: 'Raleway', sans-serif;">{{title}}</h1>
 </div>
 <div class="container">
+  <img src="{{current_profile.avatar.url}}" class="img-responsive"style="" alt="Image">
+<h2 style="font-family: 'Raleway', sans-serif">Name: {{current_profile.user.username}}</h2>
+<h2 style="font-family: 'Raleway', sans-serif">Phone_Number: {{current_profile.phone_number}}</h2>
+<h2 style="font-family: 'Raleway', sans-serif">National_id: {{current_profile.national_id}}</h2>
+</div>
+<hr>
+
+
+<div class="container">
   {% for lot in lots %}
   <div class="col-md-4 col-sm-6 col-xs-12">
   <h2 style="font-family: 'Raleway', sans-serif">Name: {{lot.Name_of_lot}}</h2>
