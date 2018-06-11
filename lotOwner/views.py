@@ -32,4 +32,4 @@ def Lotdetail(request,profile_id):
     else:
         form=LotDetailsForm()
 
-    return render(request,'Lot/details.html',{"form":form,"current_profile":current_profile,"form1":form1})
+    return render(request,'Lot/details.html',{"form":form,"current_profile":current_profile})
