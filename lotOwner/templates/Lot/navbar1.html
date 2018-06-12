@@ -15,7 +15,7 @@
    </div>
    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="{% url 'Details' current_profile.id %}"  style="font-family: 'Raleway', sans-serif;font-size:25px;color:black;">Add Lot Details<span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="{% url 'Details' request.user.id %}"  style="font-family: 'Raleway', sans-serif;font-size:25px;color:black;">Add Lot Details<span class="sr-only">(current)</span></a></li>
         <li class=""><a href="#" style="font-family: 'Raleway', sans-serif;font-size:25px;color:black;"> <span class="sr-only"></span>Edit Profile</a></li>
 
       </ul>
