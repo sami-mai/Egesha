@@ -70,7 +70,7 @@ def home(request):
     '''
     function to display driver and car details
     '''
-
+    title="Egesha | Home "  
     try:
         cardetails = Cardetails.objects.filter( id = request.user.id)
         profile = DriverProfile.objects.filter(id = request.user.id)
@@ -78,4 +78,4 @@ def home(request):
     except ValueError:
         Http404
 
-    return render(request,'user/index.html',{"cardetails":cardetails,"profile":profile,"user":user})
+    return render(request,'user/index.html',{"title":title,"cardetails":cardetails,"profile":profile,"user":user})
