@@ -1,18 +1,10 @@
-{%extends 'Lot/base.html'%}
-{% load bootstrap3 %}
-{% load static %}
-{% block styles %}
-{% bootstrap_css %}
-<link rel="stylesheet" href="#">
-{% endblock %}
-{% block content %}
+{%extends 'Lot/base.html'%} {% load bootstrap3 %} {% load static %} {% block styles %} {% bootstrap_css %}
+<link rel="stylesheet" href="#"> {% endblock %} {% block content %}
 <div class="container">
-<h1>Add Lot Details</h1>
+  <h1>Add Lot Details</h1>
 
- <form  action="{% url 'Details' current_user.id %}" method="post" enctype="multipart/form-data">
-    {%csrf_token%}
-
-    {% bootstrap_form form%}
+  <form action="{% url 'lotOwner:Details' current_user.id %}" method="post" enctype="multipart/form-data">
+    {%csrf_token%} {% bootstrap_form form%}
     <input type="submit" class="btn btn-warning btn-lg" value="Save">
   </form>
 

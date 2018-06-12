@@ -37,7 +37,7 @@
                     fill in profile details
 
                 </h1>
-        <a href="{% url 'profileform'%}">
+        <a href="{% url 'driver:edit_profile'%}">
                     <button type="submit" class="btn btn-lg btn-primary btn-block text-black text-uppercase text-center text-sm" value="cardetails" style="background-color:rgb(0, 0, 255)">input personal details</button>
                 </a>
       </div>{% endif %}
@@ -58,7 +58,7 @@
                     fill in car details
 
                 </h1>
-        <a href="{% url 'cardetails'%}">
+        <a href="{% url 'driver:car_details'%}">
                     <button type="submit" class="btn btn-lg btn-primary btn-block text-black text-uppercase text-center text-sm" value="cardetails" style="background-color:rgb(0, 0, 255)">input car details</button>
                 </a> {% endif %}
       </div>
