@@ -1,10 +1,10 @@
  {%extends "registration/base.html"%} {% load bootstrap3 %} {% load static%}
 <!--  -->
 {% block content %}
-<div class="container-fluid" style="background-color:black; color: white;">
+<div class="container-fluid" style="background-color:black; color: #D5DFD5; height:75px;">
   <div class="text-center">
-    <h1 style="font-family: 'Cookie', cursive;"><strong>
-     <a href="/"><img class=" img-fluid img-rounded" src="{% static '/images/logo.png' %}" width="50" height="50" alt="icon"></a>
+    <h1 style="font-family: 'Lobster', cursive; margin-top:5px;"><strong>
+     <a href="/"><img class=" img-fluid img-rounded" src="{% static '/images/logo.png' %}" width="65" height="65" alt="icon"></a>
      Egesha </strong></h1>
   </div>
 </div>
@@ -25,11 +25,11 @@
       <div class="panel panel-default">
 
         <div class="panel-heading">
-          <h3 class="text-center">Login</h3>
+          <h2 class="text-center" style="font-family: 'Raleway', sans-serif; color:black;font-size: 2em;"><strong>Login</strong></h2>
         </div>
-        <div class="panel-body" style="background-color:black; color: white;">
+        <div class="panel-body" style="font-family: 'Raleway', sans-serif;background-color:black; color: white;">
           <p>Don't have an account yet?
-            <a href="/user/accounts/register" class="forgot"> Register here ...</a></p>
+            <a href="/user/accounts/register" class="forgot" style="font-family: 'Raleway', sans-serif;"> Register here ...</a></p>
         </div>
         <div class="panel-body">
           <form action="/user/accounts/login/" method="post">

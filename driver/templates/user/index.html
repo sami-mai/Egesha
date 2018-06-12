@@ -1,0 +1,68 @@
+{%extends 'user/base.html'%} {% block content %} {% load bootstrap3 %}{% load static%}{{ block.super}} {% block styles %} {% bootstrap_css %} {% endblock %}
+
+<div class="container">
+  <div class="row justify-content-center">
+    {% if user %}
+    <div class="col-md-8 col-lg-6">
+
+      <!-- Heading -->
+      <h2 class="text-center mb-4">
+                {{ user.username }}
+            </h2> {% endif %}
+    </div>
+    <!-- / .row -->
+  </div>
+
+  <div class="container">
+    <div class="row justify-content-center align-items-center">
+      {% if profile %}
+      <div class="col-md-6 col-lg-7" style="padding-top: 15%;">
+
+        <!-- Preheading -->
+        <img src=" {{ profile.avatar.url }}" alt="avatar">
+
+        <!-- Heading -->
+        <p class="text-center mb-4" data-animation="fadeUp" data-animation-order="1" data-animation-trigger="entered">
+          {{ profile.bio}}
+        </p>
+        <p class="text-center mb-4" data-animation="fadeUp" data-animation-order="1" data-animation-trigger="entered">
+          {{ profile.license}}
+        </p>
+        <p class="text-center mb-4" data-animation="fadeUp" data-animation-order="1" data-animation-trigger="entered">
+          {{ profile.phone_number}}
+        </p>
+
+        {% else %}
+        <h1 class="text-black text-muted text-uppercase text-center text-sm" data-animation="fadeUp" data-animation-order="0" data-animation-trigger="entered">
+                    fill in profile details
+
+                </h1>
+        <a href="{% url 'driver:edit_profile'%}">
+                    <button type="submit" class="btn btn-lg btn-primary btn-block text-black text-uppercase text-center text-sm" value="cardetails" style="background-color:rgb(0, 0, 255)">input personal details</button>
+                </a>
+      </div>{% endif %}
+
+      <br> {% if cardetails %}
+      <div class="col-md-6 col-lg-7" style="padding-top: 15%;">
+
+        <!-- Preheading -->
+        <h1 class="text-black text-muted text-uppercase text-center text-sm" data-animation="fadeUp" data-animation-order="0" data-animation-trigger="entered">
+                    {{ cardetails.car_make }}
+                </h1>
+
+        <!-- Heading -->
+        <h3 class="text-center mb-4" data-animation="fadeUp" data-animation-order="1" data-animation-trigger="entered">
+                    {{ cardetails.car_plate }}
+                </h3> {% else %}
+        <h1 class="text-black text-muted text-uppercase text-center text-sm" data-animation="fadeUp" data-animation-order="0" data-animation-trigger="entered">
+                    fill in car details
+
+                </h1>
+        <a href="{% url 'driver:car_details'%}">
+                    <button type="submit" class="btn btn-lg btn-primary btn-block text-black text-uppercase text-center text-sm" value="cardetails" style="background-color:rgb(0, 0, 255)">input car details</button>
+                </a> {% endif %}
+      </div>
+    </div>
+    <!-- / .row -->
+  </div>
+</div> {% endblock %}
