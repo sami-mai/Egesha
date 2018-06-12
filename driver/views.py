@@ -6,7 +6,7 @@ from accounts.models import DriverProfile
 from accounts.forms import EditDriver,EditUserForm
 # Create your views here.
 
-def cardetails(request):
+def car_details(request):
     '''
     function to populate the details of the car
     '''
@@ -15,26 +15,26 @@ def cardetails(request):
     try:
         if request.method == 'POST':
             cardetails_form = CardetailsForm(request.POST, request.FILES)
-           
+
             if cardetails_form.is_valid():
                 cardetails = cardetails_form.save(commit=False)
-                
+
                 cardetails.user=current_user
-                
+
                 cardetails.save()
-                
+
                 return redirect('/driver/')
 
         else:
             cardetails_form = CardetailsForm
-          
+
     except ValueError:
         Http404
 
     return render(request, 'user/cardetails.html', {"title":title,"cardetails_form": cardetails_form})
 
 
-def profileform(request):
+def edit_profile(request):
     '''
     function to populate the details of the car
     '''
@@ -42,17 +42,17 @@ def profileform(request):
     current_user = request.user
     try:
         if request.method == 'POST':
-            
+
             driver_form  = EditDriver(request.POST,request.FILES)
             user_form = EditUserForm(request.POST, request.FILES)
             if driver_form.is_valid() and user_form.is_valid():
-               
+
                 driverdetails = driver_form.save(commit=False)
                 userdetails = user_form.save(commit=False)
-               
+
                 driverdetails.user=current_user
                 userdetails.user=current_user
-               
+
                 driverdetails.save()
                 userdetails.save()
                 return redirect('/driver/')
@@ -60,22 +60,22 @@ def profileform(request):
         else:
             driver_form  = EditDriver
             user_form = EditUserForm
-        
+
     except ValueError:
         Http404
 
     return render(request, 'user/profileform.html', {"title":title,"driver_form":driver_form,"user_form":user_form})
 
-def index(request):
+def home(request):
     '''
     function to display driver and car details
     '''
- 
+
     try:
         cardetails = Cardetails.objects.filter( id = request.user.id)
         profile = DriverProfile.objects.filter(id = request.user.id)
         user = request.user
     except ValueError:
         Http404
-    
+
     return render(request,'user/index.html',{"cardetails":cardetails,"profile":profile,"user":user})

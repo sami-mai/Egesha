@@ -20,7 +20,7 @@ from django.conf.urls.static import static
 from . import views as project_views
 
 urlpatterns = [
-    url(r'^lot/',include('lotOwner.urls')),
+    url(r'^lot/', include('lotOwner.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^$', project_views.landing, name='landing'),
     url(r'^user/', include('accounts.urls')),

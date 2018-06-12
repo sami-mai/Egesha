@@ -94,10 +94,11 @@ WSGI_APPLICATION = 'egeshaProject.wsgi.application'
 
 DATABASES = {
     'default': {
-            'ENGINE': config('DB_ENGINE'),
-            'NAME': config('DB_NAME'),
-            'USER': config('DB_USER'),
-            'PASSWORD': config('DB_PASSWORD'),
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'egesha',
+            'USER': 'sami_mai',
+            'PASSWORD': 'SmaiDB',
+
             }
 }
 db_from_env = dj_database_url.config(conn_max_age=500)
@@ -186,8 +187,9 @@ SOCIAL_AUTH_GOOGLE_PLUS_SCOPE = [
     'https://www.googleapis.com/auth/userinfo.email',
     'https://www.googleapis.com/auth/userinfo.profile'
 ]
-
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = config('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = config('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET')
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '710039739994-mptrokh4t2k6dk2fe2g14l8j66kk67h1.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'wI7pzTh2AYMB4jeBBu05_eLx'
+# SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = config('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
+# SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = config('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET')
 
 LOGIN_REDIRECT_URL = 'landing'
