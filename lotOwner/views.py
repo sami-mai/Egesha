@@ -16,10 +16,12 @@ def home(request):
     title='Welcome lot owner'
     lots=''
     current_profile=''
+    spots=''
     current_user_name=OwnerProfile.objects.filter(id=request.user.id)
     if current_user_name.exists():
         current_profile=OwnerProfile.objects.get(id=current_user)
         lots=LotDetails.objects.filter(owner=current_profile)
+        spots=list(Location.objects.filter(owner=current_profile))
     if request.method == 'POST':
         form1=OwnerProfileForm(request.POST)
         if form1.is_valid():
@@ -28,7 +30,7 @@ def home(request):
             return redirect (home)
     else:
         form1=OwnerProfileForm()
-    spots=list(Location.objects.filter(owner=current_profile))
+
     print(spots)
     coords={"1":1,"2":2}
     coords_json=json.dumps(coords,cls=DjangoJSONEncoder)
@@ -43,11 +45,9 @@ def Lotdetail(request,profile_id):
             details = form.save(commit=False)
             details.owner = current_profile
             details.save()
-<<<<<<< HEAD
-            return redirect(home, current_profile.id)
-=======
+
             return redirect (home)
->>>>>>> daafda9bc01eff8999394265505c218be242e265
+
     else:
         form=LotDetailsForm()
 
