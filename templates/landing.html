@@ -17,7 +17,7 @@
   <div class="nav text-center">
     <a style="color:#90AD90;" href="#driver">Driver</a>
     <a style="color:#90AD90;" href="#lotOwner">/ Lot Owner</a>
-    <a style="color:#90AD90;" href="#lotManager">/ Lot Manager</a>
+    <a style="color:#90AD90;" href="#lotManager">/ Lot Operator</a>
   </div>
   <!-- END NAVBAR -->
   <hr style="background-color:#90AD90;">
@@ -25,21 +25,21 @@
   <div class="container" style="padding-left:50px;">
     <div class="row">
       <div class="col-md-4">
-        <img class="img-fluid img-responsive" src="{%static '/images/navigate.jpg'%}" width="300px" height="250px" alt="">
+        <img class="img-fluid img-responsive" src="{%static '/images/audi.jpg'%}" width="300px" height="250px" alt="">
         <h3>Automotive & Navigation</h3>
         <p>
           Egesha Parking provides a complete solution for <br> drivers, enabling them to easily find, compare, <br> pay and navigate to the best parking spot.
         </p>
       </div>
       <div class="col-md-4">
-        <img class="img-fluid img-responsive" src="{%static '/images/navigate.jpg'%}" width="300px" height="250px" alt="">
+        <img class="img-fluid img-responsive" src="{%static '/images/smartcities.jpg'%}" width="300px" height="250px" alt="">
         <h3>Smart Cities</h3>
         <p>
           Egesha Parking helps cities unlock the value of <br> Big Data to cut costs, improve efficiency, and <br> enhance the parking experience for drivers.
         </p>
       </div>
       <div class="col-md-4">
-        <img class="img-fluid img-responsive" src="{%static '/images/navigate.jpg'%}" width="300px" height="250px" alt="">
+        <img class="img-fluid img-responsive" src="{%static '/images/business.jpg'%}" width="300px" height="250px" alt="">
         <h3>Businesses</h3>
         <p>
           Egesha Parking provides businesses, lot owners <br> and operators with tools to manage and measure <br> your parking assets while also providing a platform <br> to communicate parking information directly to <br>drivers.
@@ -95,7 +95,7 @@
 <div class="container">
   <a class="anchor" name="lotManager"></a>
   <div class="row">
-    <img style="float:left; width:500px; height:400px;" src="{%static '/images/cash.jpg'%}" alt="earn with egesha">
+    <img style="float:left; width:500px; height:400px;" src="{%static '/images/parked.jpg'%}" alt="earn with egesha">
     <div class="well" style="background-color: #D5DFD5; opacity:0.8; width:670px; height:400px; margin-left:500px; ">
       <h1 class="text-center">testing </h1>
       <p>
@@ -103,10 +103,10 @@
         for parking.
       </p>
       {%if user.is_authenticated%}
-      <a href="#" class="btn btn-primary">Lot Manager</a>
+      <a href="#" class="btn btn-primary">Lot Operator</a>
       <!--  -->
       {%else%}
-      <a href="{%url 'login'%}" class="btn btn-primary">Get Started</a>
+      <a href="{%url 'login'%}" class="btn btn-primary">Lot Operator</a>
       <!--  -->
       {%endif%}
     </div>
