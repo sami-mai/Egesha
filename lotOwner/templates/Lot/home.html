@@ -13,7 +13,7 @@
 </div>
 {% else %}
 <div class="container">
-  <form action="{% url 'Lot' %}" method="post" enctype="multipart/form-data">
+  <form action="{% url 'lotOwner:Lot' %}" method="post" enctype="multipart/form-data">
     {%csrf_token%} {% bootstrap_form form1 %}
     <input type="submit" class="btn btn-warning btn-lg" value="Create profile">
   </form>
@@ -40,15 +40,11 @@
   {% endfor %}
 
 </div>
-<hr>
-
-
-{% endblock %} {% block scripts %}
+<hr> {% endblock %} {% block scripts %}
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 {% bootstrap_javascript %}
 <script>
-
 </script>
 <!--we load the api from the specified api, the async attribute allows the page to
     load as the api loads the call back paramater executes the initMap() function that specifies the latitude and longitude of where the map will

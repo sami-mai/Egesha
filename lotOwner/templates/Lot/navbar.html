@@ -21,8 +21,8 @@
       </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li class=""><a href="{% url 'Details' request.user.id %}" style="font-family: 'Raleway', sans-serif;font-size:25px;color:black;font-size: 1.2em;">Add Lot Details<span class="sr-only">(current)</span></a></li>
-          <li class=""><a href="{% url 'Location' %}" style="font-family: 'Raleway', sans-serif;font-size:25px;color:black;font-size: 1.2em;">Add Lot Location<span class="sr-only">(current)</span></a></li>
+          <li class=""><a href="{% url 'lotOwner:Details' request.user.id %}" style="font-family: 'Raleway', sans-serif;font-size:25px;color:black;font-size: 1.2em;">Add Lot Details<span class="sr-only">(current)</span></a></li>
+          <li class=""><a href="{% url 'lotOwner:Location' %}" style="font-family: 'Raleway', sans-serif;font-size:25px;color:black;font-size: 1.2em;">Add Lot Location<span class="sr-only">(current)</span></a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right pull-right">
           <li>

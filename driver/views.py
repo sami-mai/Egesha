@@ -72,8 +72,8 @@ def home(request):
     '''
 
     try:
-        cardetails = Cardetails.objects.filter( id = request.user.id)
-        profile = DriverProfile.objects.filter(id = request.user.id)
+        cardetails = Cardetails.objects.filter(id = request.user.id)
+        profile = DriverProfile.objects.filter(id =request.user.id)
         user = request.user
     except ValueError:
         Http404

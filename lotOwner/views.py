@@ -23,11 +23,12 @@ def home(request):
         lots=LotDetails.objects.filter(owner=current_profile)
 
     if request.method == 'POST':
-        form1=OwnerProfileForm(request.POST)
+        form1=OwnerProfileForm(request.POST, request.FILES)
         if form1.is_valid():
             user_profile=form1.save(commit=False)
             user_profile.user=request.user
-            return redirect(home)
+            user_profile.save( )
+            return redirect('/lot/owner/')
     else:
         form1=OwnerProfileForm()
 
@@ -47,7 +48,7 @@ def Lotdetail(request,profile_id):
             details.owner = current_profile
             details.save()
 
-            return redirect(home)
+            return redirect('/lot/owner/')
 
     else:
         form=LotDetailsForm()
@@ -55,6 +56,7 @@ def Lotdetail(request,profile_id):
     return render(request,'Lot/details.html',{"form":form,"current_profile":current_profile,"current_user":current_user})
 
 def map(request):
+
     lot_owner=OwnerProfile.objects.get(id=request.user.id)
     gmaps=googlemaps.Client(key='AIzaSyBmrKc7FjQwLm9vEtseo5LK7Z6M_1aPm5k')
     title='hello'
@@ -77,11 +79,11 @@ def map(request):
         location.longitude=longitude
         location.owner=lot_owner
         location.save()
-        return redirect (home)
+        return redirect ('/lot/owner/')
 
     else:
         print('Not working')
-    return redirect(home)
+    return redirect('/lot/owner/')
 def location(request):
     current_user=request.user.id
 
@@ -93,7 +95,7 @@ def location(request):
         spots=list(Location.objects.filter(owner=current_profile))
 
         print(spots)
-        coords={"1":1,"2":2}
-        coords_json=json.dumps(coords,cls=DjangoJSONEncoder)
-        spots_json=serializers.serialize('json',spots,cls=DjangoJSONEncoder)
-        return render (request,'Lot/location.html',{"coords_json":coords_json,"spots_json":spots_json})
+    coords={"1":1,"2":2}
+    coords_json=json.dumps(coords,cls=DjangoJSONEncoder)
+    spots_json=serializers.serialize('json',spots,cls=DjangoJSONEncoder)
+    return render (request,'Lot/location.html',{"coords_json":coords_json,"spots_json":spots_json})
