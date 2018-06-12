@@ -33,7 +33,7 @@
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Driver<span class="caret"></span></a>
                   <ul class="dropdown-menu"> -->
                 <li><a href="{%url 'driver:home'%}" style="font-family: 'Raleway', sans-serif; color:black;font-size: 1.2em;"><strong>Book Now</strong></a></li>
-                <li><a href="#" style="font-family: 'Raleway', sans-serif; color:black;font-size: 1.2em;"><strong>Let Your Lot</strong></a></li>
+                <li><a href="{%url 'lotOwner:Lot'%}" style="font-family: 'Raleway', sans-serif; color:black;font-size: 1.2em;"><strong>Let Your Lot</strong></a></li>
 
               </ul>
               <!-- Adding a search form  -->
@@ -57,7 +57,7 @@
                   <a href="#" style="font-family: 'Raleway', sans-serif; color:black;font-size: 1.2em;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><strong>{{user.username|title}} </strong><span class="caret"></span></a>
                   <ul class="dropdown-menu">
 
-                    <li class=text-center text-muted><strong>@ {{user.username}}</strong></li>
+                    <li class="text-center text-muted" style="font-family: 'Raleway', sans-serif; color:black;font-size: 1.2em;"><strong>@ {{user.username}}</strong></li>
                     <li role="separator" class="divider"></li>
                     <li><a href="#" style="font-family: 'Raleway', sans-serif; color:black;font-size: 1.2em;">Edit Profile</a></li>
                     <li>
