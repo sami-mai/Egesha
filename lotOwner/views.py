@@ -46,7 +46,9 @@ def Lotdetail(request,profile_id):
             details = form.save(commit=False)
             details.owner = current_profile
             details.save()
+
             return redirect (home)
+
     else:
         form=LotDetailsForm()
 
