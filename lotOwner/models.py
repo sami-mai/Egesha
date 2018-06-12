@@ -22,4 +22,4 @@ class Location(models.Model):
     name_of_location = models.CharField(max_length=40)
     latitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
     longitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
-    Lot = models.ForeignKey(LotDetails, null=True)
+    owner=models.ForeignKey(OwnerProfile,null=True)
