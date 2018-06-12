@@ -1,13 +1,14 @@
-{%extends 'user/base.html'%} {% block content %}{% load bootstrap3 %} {{form.media}} {% load static %} {% block styles %} {% bootstrap_css %} {% endblock %}
+{%extends 'user/base.html'%} {% load bootstrap3 %} {% load static %} {% block content %} {{form.media}}
 <div class="container" style="padding-top: 10%">
   <h1>
         <strong>Car details</strong>
     </h1> {{form.media}}
 
-  <form action="{%url 'cardetails' %}" method="post" enctype="multipart/form-data">
+  <form action="{%url 'driver:car_details' %}" method="post" enctype="multipart/form-data">
     {%csrf_token%} {% bootstrap_form cardetails_form%}
     <input type="submit" class="btn btn-success btn-lg" value="Post">
   </form>
 
 
-</div> {%endblock%}
+</div>
+<br><br><br><br><br><br><br><br><br>{%endblock%}
