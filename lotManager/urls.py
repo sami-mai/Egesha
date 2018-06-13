@@ -6,7 +6,7 @@ from . import views
 
 urlpatterns=[
     url(r'^$',views.dashboard,name='dashboard'),
-  
+
 ]
 
 if settings.DEBUG:
