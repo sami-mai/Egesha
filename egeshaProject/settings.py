@@ -48,11 +48,8 @@ INSTALLED_APPS = [
     'lotManager',
     'lotOwner',
     'bootstrap3',
-<<<<<<< HEAD
     'social_django',
-=======
 
->>>>>>> fbcdb2c1899643e1da54ad35869ee3336c06f905
 ]
 
 
