@@ -48,8 +48,7 @@ INSTALLED_APPS = [
     'lotManager',
     'lotOwner',
     'bootstrap3',
-    'paypal.standard',
-    'paypal.pro',
+   
 ]
 
 MIDDLEWARE = [
