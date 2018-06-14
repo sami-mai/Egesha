@@ -15,6 +15,7 @@
 <div class="container">
   <form action="{% url 'Lot' %}" method="post" enctype="multipart/form-data">
     {%csrf_token%} {% bootstrap_form form1 %}
+
     <input type="submit" class="btn btn-warning btn-lg" value="Create profile">
   </form>
 </div>
