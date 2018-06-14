@@ -38,19 +38,11 @@
       center: myLatLng,
       zoom: 13
     });
-    var contentString = '<div id="content">' + '<h4>Location name</h4>' + name + '</div>';
-    infowindow = new google.maps.InfoWindow({
-      content: contentString
 
 
-    });
-
-    marker.addListener('click', function() {
-      infowindow.open(map, marker);
-    });
 
 
-  }
+
 
   //we assign a click listener  with the addListener that creates a marker when the user clicks the map
 
@@ -88,7 +80,8 @@
 
 
 
-  }
+}
+
 </script>
 <!--we load the api from the specified api, the async attribute allows the page to
     load as the api loads the call back paramater executes the initMap() function that specifies the latitude and longitude of where the map will
