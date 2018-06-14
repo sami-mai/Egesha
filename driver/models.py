@@ -1,4 +1,4 @@
-from django.db import models
+gfrom django.db import models
 from accounts.models import DriverProfile
 from lotOwner.models import LotDetails
 import datetime as dt
