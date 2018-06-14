@@ -13,7 +13,7 @@ from django.core.serializers.json import DjangoJSONEncoder
 
 def home(request):
     current_user=request.user.id
-    title='Welcome lot owner'
+    # title='Welcome lot owner'
     lots=''
     current_profile=''
 
@@ -34,7 +34,7 @@ def home(request):
 
 
 
-    return render (request,'Lot/home.html',{"title":title,"lots":lots,"current_profile":current_profile,"form1":form1})
+    return render (request,'Lot/home.html',{"lots":lots,"current_profile":current_profile,"form1":form1})
 def Lotdetail(request,profile_id):
     current_profile=''
     current_user=request.user
