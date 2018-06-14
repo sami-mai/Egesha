@@ -1,87 +1,86 @@
 {%extends 'user/base.html'%} {% load bootstrap3 %}{% load static%} {% block content %}
+<br><br><br><br><br><br><br>
 <div class="container">
-<div class="row">
+  <div class="row">
     {% if searched_locations %}
-      <h2>Found {{ searched_locations|length }} results  of the searched  location </h2>
-    {% else %}
-      <h2> Found 0 results </h2>
-    {% endif %}
+    <h2>Found {{ searched_locations|length }} results  of the searched  location </h2> {% else %}
+    <h2> Found 0 results </h2> {% endif %}
 
   </div>
 </div>
 <div id="map">
   hello</div>
 
-  {% endblock %} {% block scripts %}
+{% endblock %} {% block scripts %}
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  {% bootstrap_javascript %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+{% bootstrap_javascript %}
 <script>
-var map;
-var marker;
-var infowindow;
+  var map;
+  var marker;
+  var infowindow;
 
 
-var $lat;
-var $lon;
+  var $lat;
+  var $lon;
 
-function initMap() {
-  //location of Nairobi is stored in a varibale
-  var myLatLng = {
-    lat: -1.28333,
-    lng: 36.81667
-  };
-  var mombasa = {
-    lat: -1.3007,
-    lng: 36.7849
-  };
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: myLatLng,
-    zoom: 13
-  });
-  // the marker is positioned at Nairobi
-  //the infowindow retrives the form element when clicking a marker
-
-
+  function initMap() {
+    //location of Nairobi is stored in a varibale
+    var myLatLng = {
+      lat: -1.28333,
+      lng: 36.81667
+    };
+    var mombasa = {
+      lat: -1.3007,
+      lng: 36.7849
+    };
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: myLatLng,
+      zoom: 13
+    });
+    // the marker is positioned at Nairobi
+    //the infowindow retrives the form element when clicking a marker
 
 
-  //we assign a click listener  with the addListener that creates a marker when the user clicks the map
 
-  // we create a variable called spots that store the spots that we passed from the view function
-  var spots = JSON.parse('{{spots_json|safe}}');
-  console.log(spots);
-  for (var i = 0; i < spots.length; i++) {
-    console.log('yess its working');
-    //we store the lat and long in the variables
-    var lat = parseFloat(spots[i].fields.latitude)
-    var lng = parseFloat(spots[i].fields.longitude)
-    var name = spots[i].fields.name_of_location
-    //Assign them positions lat being index 0
-    coords = [lat, lng]
-    //we log them to the console to check if the function is working
-    //console.log(name);
-    console.log(name)
 
-    var LatLng = new google.maps.LatLng(coords[0], coords[1]);
-    marker = new google.maps.Marker({
-      position: LatLng,
-      map: map
+    //we assign a click listener  with the addListener that creates a marker when the user clicks the map
+
+    // we create a variable called spots that store the spots that we passed from the view function
+    var spots = JSON.parse('{{spots_json|safe}}');
+    console.log(spots);
+    for (var i = 0; i < spots.length; i++) {
+      console.log('yess its working');
+      //we store the lat and long in the variables
+      var lat = parseFloat(spots[i].fields.latitude)
+      var lng = parseFloat(spots[i].fields.longitude)
+      var name = spots[i].fields.name_of_location
+      //Assign them positions lat being index 0
+      coords = [lat, lng]
+      //we log them to the console to check if the function is working
+      //console.log(name);
+      console.log(name)
+
+      var LatLng = new google.maps.LatLng(coords[0], coords[1]);
+      marker = new google.maps.Marker({
+        position: LatLng,
+        map: map
+      });
+
+    }
+    var contentString = '<div id="content">' + '<h4>Location name</h4>' + name + '</div>';
+    infowindow = new google.maps.InfoWindow({
+      content: contentString
+
     });
 
+    marker.addListener('click', function() {
+      infowindow.open(map, marker);
+    });
+
+
+
   }
-  var contentString='<div id="content">'+'<h4>Location name</h4>'+name+'</div>';
-  infowindow= new google.maps.InfoWindow({
-         content:contentString
-
-       });
-
-       marker.addListener('click', function() {
-         infowindow.open(map, marker);
-       });
-
-
-
-}
 </script>
 <!--we load the api from the specified api, the async attribute allows the page to
     load as the api loads the call back paramater executes the initMap() function that specifies the latitude and longitude of where the map will

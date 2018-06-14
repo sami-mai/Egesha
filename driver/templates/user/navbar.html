@@ -24,11 +24,7 @@
 
 
         <ul class="nav navbar-nav">
-          <li class="">
-            <a href="{%url 'driver:car_details'%}" style="font-family: 'Raleway', sans-serif;font-size: 1.2em;color:black;">Add Car Details
-                            <span class="sr-only">(current)</span>
-                        </a>
-          </li>
+
 
         </ul>
         <ul class="nav navbar-nav navbar-right pull-right">
@@ -45,14 +41,7 @@
               <li class="text-center text-muted" style="font-family: 'Raleway', sans-serif; color:black;font-size: 1.2em;"><strong>@ {{user.username}}</strong></li>
               <li role="separator" class="divider"></li>
               <li><a href="{% url 'driver:edit_profile'%}" style="font-family: 'Raleway', sans-serif; color:black;font-size: 1.2em;">Edit Profile</a></li>
-              <!-- <li>
-                <a href="{% url 'driver:edit_profile'%}" style="font-family: 'Raleway', sans-serif; color:black;font-size: 1.2em;">Your profile</a>
-              </li> -->
-
-              <!-- <li>
-                <a href="#" style="font-family: 'Raleway', sans-serif; color:black;font-size: 1.2em;">Change Password</a>
-              </li> -->
-              <!-- <li role="separator" class="divider"></li> -->
+              <li><a href="{%url 'driver:car_details'%}" style="font-family: 'Raleway', sans-serif;font-size: 1.2em;color:black;">Add Car Details<span class="sr-only">(current)</span></a></li>
 
             </ul>
       </div>
