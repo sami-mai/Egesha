@@ -77,7 +77,7 @@ def home(request):
     '''
     function to display driver and car details
     '''
-    title="Egesha | Home "  
+    title="Egesha | Home "
     try:
         cardetails = Cardetails.objects.filter(id = request.user.id)
         profile = DriverProfile.objects.filter(id =request.user.id)
@@ -108,4 +108,3 @@ def search_location(request):
     searched_locations=Location.search(search_term)
 
     return render (request,'user/search.html',{"coords_json":coords_json,"spots_json":spots_json,"searched_locations":searched_locations})
-
