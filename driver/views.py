@@ -4,11 +4,13 @@ from .models import Cardetails
 from django.http import Http404
 from accounts.models import DriverProfile
 from accounts.forms import EditDriver,EditUserForm
+
 from lotOwner.models import Location
 from django.core import serializers
 from django.core.serializers import serialize
 import json
 from django.core.serializers.json import DjangoJSONEncoder
+# Create your views here.
 import africastalking
 
 
@@ -76,13 +78,14 @@ def home(request):
     '''
     function to display driver and car details
     '''
-
+    title="Egesha | Home "
     try:
         cardetails = Cardetails.objects.filter(id = request.user.id)
         profile = DriverProfile.objects.filter(id =request.user.id)
         user = request.user
     except ValueError:
         Http404
+
 
     return render(request,'user/index.html',{"cardetails":cardetails,"profile":profile,"user":user})
 
