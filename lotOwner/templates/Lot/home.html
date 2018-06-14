@@ -1,10 +1,9 @@
 {%extends 'Lot/base.html'%} {% load bootstrap3 %} {% load static %} {% block content %}
-
-<div class="container">
-  <h1 class="text-center" style="font-family: 'Raleway', sans-serif;">{{title}}</h1>
-</div>
-
+<!--  -->
 {% if current_profile %}
+<div class="container">
+  <h1 class="text-center" style="font-family: 'Raleway', sans-serif;">Lot Owner</h1>
+</div>
 <div class="container">
   <img src="{{current_profile.avatar.url}}" class="img-responsive" style="" alt="Image">
   <h2 style="font-family: 'Raleway', sans-serif">Name: {{current_profile.user.username}}</h2>
@@ -13,11 +12,15 @@
 </div>
 {% else %}
 <div class="container">
+  <h1 class="text-center" style="font-family: 'Raleway', sans-serif;">Create Profile</h1>
+</div>
+<div class="container">
   <form action="{% url 'lotOwner:Lot' %}" method="post" enctype="multipart/form-data">
     {%csrf_token%} {% bootstrap_form form1 %}
     <input type="submit" class="btn btn-warning btn-lg" value="Create profile">
   </form>
 </div>
+<!--  -->
 {% endif %}
 <hr>
 

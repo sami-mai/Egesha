@@ -85,4 +85,4 @@ def trigger_payment(request):
     africastalking.initialize(username='sandbox', api_key='4caafe95008a0a8ba2df43746a62238715dd1f3f3517be3a898402d40542c034')
     payment = africastalking.Payment
     res = payment.mobile_checkout(product_name='egesha',phone_number='+254705806372', currency_code='KES', amount=3564)
-    return redirect(home)
+    return redirect('/driver/')
