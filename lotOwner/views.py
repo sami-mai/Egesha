@@ -23,10 +23,11 @@ def home(request):
         lots=LotDetails.objects.filter(owner=current_profile)
 
     if request.method == 'POST':
-        form1=OwnerProfileForm(request.POST)
+        form1=OwnerProfileForm(request.POST,request.FILES)
         if form1.is_valid():
             user_profile=form1.save(commit=False)
             user_profile.user=request.user
+            user_profile.save()
             return redirect(home)
     else:
         form1=OwnerProfileForm()
