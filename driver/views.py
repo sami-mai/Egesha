@@ -5,11 +5,14 @@ from django.http import Http404
 from accounts.models import DriverProfile
 from accounts.forms import EditDriver,EditUserForm
 
+from lotOwner.models import Location
 from django.core import serializers
 from django.core.serializers import serialize
 import json
 from django.core.serializers.json import DjangoJSONEncoder
 # Create your views here.
+import africastalking
+
 
 def car_details(request):
     '''
@@ -77,10 +80,33 @@ def home(request):
     '''
     title="Egesha | Home "  
     try:
-        cardetails = Cardetails.objects.filter( id = request.user.id)
-        profile = DriverProfile.objects.filter(id = request.user.id)
+        cardetails = Cardetails.objects.filter(id = request.user.id)
+        profile = DriverProfile.objects.filter(id =request.user.id)
         user = request.user
     except ValueError:
         Http404
 
-    return render(request,'user/index.html',{"title":title,"cardetails":cardetails,"profile":profile,"user":user})
+
+    return render(request,'user/index.html',{"cardetails":cardetails,"profile":profile,"user":user})
+
+
+def trigger_payment(request):
+    africastalking.initialize(username='sandbox', api_key='4caafe95008a0a8ba2df43746a62238715dd1f3f3517be3a898402d40542c034')
+    payment = africastalking.Payment
+    res = payment.mobile_checkout(product_name='egesha',phone_number='+254705806372', currency_code='KES', amount=3564)
+    return redirect('/driver/')
+
+def search_location(request):
+    search_term=request.GET.get("location")
+    spots=list(Location.search(search_term))
+
+
+
+    print(spots)
+    coords={"1":1,"2":2}
+    coords_json=json.dumps(coords,cls=DjangoJSONEncoder)
+    spots_json=serializers.serialize('json',spots,cls=DjangoJSONEncoder)
+    searched_locations=Location.search(search_term)
+
+    return render (request,'user/search.html',{"coords_json":coords_json,"spots_json":spots_json,"searched_locations":searched_locations})
+

@@ -1,31 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body>
-<nav class="navbar navbar-default" >
-  <div class="container-fluid">
-    <div class="navbar-header">
-     <a class="navbar-brand" href="#" style="font-family: 'Raleway', sans-serif; font-size:35px;color:black;">Egesha</a>
-   </div>
-   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="{% url 'Details' request.user.id %}"  style="font-family: 'Raleway', sans-serif;font-size:25px;color:black;">Add Lot Details<span class="sr-only">(current)</span></a></li>
-        <li class=""><a href="#" style="font-family: 'Raleway', sans-serif;font-size:25px;color:black;"> <span class="sr-only"></span>Edit Profile</a></li>
 
-      </ul>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+    <nav class="navbar navbar-default navbar-fixed-top justify-content-between" style="height:75px; padding-top:10px; margin-bottom:0">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/" style="padding-top:0px;">
+                    <img class="img-responsive img-fluid" src="{% static '/images/logo.png' %}" width="65px" height="65px" alt="icon"><span></span>
+                </a>
+                <a class="navbar-brand" href="/lot/owner/" style="font-family: 'Lobster', cursive; font-weight: 700;font-size: 2.5em;"><strong>Egesha</strong></a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    {% if current_profile %}
+                    <li class=""><a href="{% url 'lotOwner:Details' request.user.id %}" style="font-family: 'Raleway', sans-serif;font-size:25px;color:black;font-size: 1.2em;">Add Lot Details<span class="sr-only">(current)</span></a></li>
+                    <li class=""><a href="{% url 'lotOwner:Location' %}" style="font-family: 'Raleway', sans-serif;font-size:25px;color:black;font-size: 1.2em;">Add Lot Location<span class="sr-only">(current)</span></a></li>
+                    {%else%}
+                    <!--  -->
+                    {%endif%}
+                </ul>
+                <ul class="nav navbar-nav navbar-right pull-right">
+                    <li>
+                        <a href="/user/logout" style="font-family: 'Raleway', sans-serif; color:black;font-size: 1.2em;">Logout</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+
+                </ul>
+
+                <<<<<<< HEAD=======< li class="text-center text-muted" style="font-family: 'Raleway', sans-serif; color:black;font-size: 1.2em;"><strong>@ {{user.username}}</strong></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="{#}" style="font-family: 'Raleway', sans-serif; color:black;font-size: 1.2em;">Edit Profile</a></li>
+                    <li>
+                        <a href="#" style="font-family: 'Raleway', sans-serif; color:black;font-size: 1.2em;">Your profile</a>
+                    </li>
+                    >>>>>>> bbf9e9e1f64aa5bdedbebf58e601919e0f337d25
 
 
 
+            </div>
+        </div>
 
-  </div>
-</div>
-
-</nav>
+    </nav>
 </body>
+
 </html>

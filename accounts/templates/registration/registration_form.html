@@ -9,16 +9,15 @@
   </div>
 </div>
 <br>
-<br>
 </div>
 <div class="container">
   <div class="row">
 
-    <div class="col-md-4">
+    <div class="col-md-3">
       <br>
       <!-- <img class="img-responsive img-rounded" src="{% static '/images/busy.jpg'%}" alt="Carpool-R-Us" style="width:800px; height:750px"> -->
     </div>
-    <div class="col-md-4">
+    <div class="col-md-6">
       <br> {% if form.errors %}
       <p> Some Information Might be Incorrect </p>
       {% endif %}
@@ -34,10 +33,16 @@
 
         <div class="panel-body">
           <form action="/user/accounts/register/" method="post">
+            <div class="text-center">
+              <a href="{% url 'social:begin' 'google-oauth2' %}?next=/">
+                  <img class="img-responsive img-fluid " id="signUpButton" src="{%static '/images/google2.png'%}" onclick="document.getElementById('signUpButton').src='{%static '/images/google2.png'%}'">
+                 </a>
+            </div>
             {% csrf_token %} {% bootstrap_form form%}
             <div class="form-group">
               <button class="btn btn-primary btn-block" type="submit">Create Account</button>
             </div>
+
             <input type="hidden" name="next" value="/">
           </form>
         </div>
@@ -45,7 +50,7 @@
       </div>
     </div>
 
-    <div class="col-md-4"></div>
+    <div class="col-md-3"></div>
   </div>
 </div>
 
