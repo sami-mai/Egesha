@@ -63,7 +63,7 @@ def edit_profile(request):
 
                 driverdetails.save()
                 userdetails.save()
-                return redirect('/driver/')
+                return redirect('/driver/car-details')
 
         else:
             driver_form  = EditDriver

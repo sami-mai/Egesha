@@ -68,7 +68,7 @@
     });
 
   }
-  var contentString = '<div id="content">' + '<h4>Location name</h4>' + name + '</div>';
+  var contentString = '<div id="content">' + '<h4>Location name</h4>' + name +'<br>' +'<button class = "btn btn-info"><a href = "{% url 'driver:edit_profile'%}">book</a></button>' + '</div>';
   infowindow = new google.maps.InfoWindow({
     content: contentString
 
