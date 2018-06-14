@@ -73,7 +73,7 @@
 <script>
     function initMap() {
         var Nairobi = {
-            lat: 1.2921,
+            lat: -1.2921,
             lng: 36.8219
         };
         var map = new google.maps.Map(document.getElementById('map'), {
@@ -84,27 +84,6 @@
             position: Nairobi,
             map: map
         });
-
-        infowindow = new google.maps.InfoWindow({
-            content: document.getElementById('form')
-        }); // retrives the message element on
-        saving the info window messagewindow = new google.maps.InfoWindow({
-            content: document.getElementById('message')
-        }); //we
-        assign a click listener with the addListener that creates a marker when the user clicks the map google.maps.event.addListener(map,
-            'click',
-            function(event) {
-                marker = new google.maps.Marker({
-                    position: event.latLng,
-                    map: map
-                });
-                google.maps.event.addListener(marker,
-                    'click',
-                    function() {
-                        infowindow.open(map, marker);
-                    });
-            });
-
     }
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCK_t72XTSivEU3POATANkgjcWilYv5UT4&callback=initMap"></script>
