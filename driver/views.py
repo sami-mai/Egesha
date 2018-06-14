@@ -4,6 +4,11 @@ from .models import Cardetails
 from django.http import Http404
 from accounts.models import DriverProfile
 from accounts.forms import EditDriver,EditUserForm
+
+from django.core import serializers
+from django.core.serializers import serialize
+import json
+from django.core.serializers.json import DjangoJSONEncoder
 # Create your views here.
 
 def car_details(request):
