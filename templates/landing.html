@@ -84,7 +84,7 @@
       <h1 class="text-center">testing </h1>
       <!--  -->
       {%if user.is_authenticated%}
-      <a href="{%url 'lotOwner:Lot' %}" class="btn btn-primary">Lot Owner</a>
+      <a href="{%url 'Lot' %}" class="btn btn-primary">Lot Owner</a>
       <!--  -->
       {%else%}
       <a href="{%url 'login'%}" class="btn btn-primary">Lot Owner</a>

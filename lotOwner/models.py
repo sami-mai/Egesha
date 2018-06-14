@@ -25,5 +25,5 @@ class Location(models.Model):
     owner=models.ForeignKey(OwnerProfile,null=True)
     @classmethod
     def search (cls,search_term):
-        locations=cls.objects.filter(name__icontains=search_term)
+        locations=cls.objects.filter(name_of_location__icontains=search_term)
         return locations
