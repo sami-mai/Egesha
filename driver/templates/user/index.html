@@ -22,71 +22,71 @@
         </div>{% endif %}
         <!-- / .row -->
     </div>
+</div>
+<div class="container">
+    <div class="row justify-content-center align-items-center">
+        {% if profile %} {% for profile in profile %}
+        <div class="col-md-6 col-lg-7" style="padding-top: 15%;">
 
-    <div class="container">
-        <div class="row justify-content-center align-items-center">
-            {% if profile %} {% for profile in profile %}
-            <div class="col-md-6 col-lg-7" style="padding-top: 15%;">
+            <!-- Preheading -->
+            <img src=" {{ profile.avatar.url }}" alt="avatar">
 
-                <!-- Preheading -->
-                <img src=" {{ profile.avatar.url }}" alt="avatar">
+            <!-- Heading -->
+            <p class="text-center mb-4" data-animation="fadeUp" data-animation-order="1" data-animation-trigger="entered">
+                {{ profile.bio}}
+            </p>
+            <p class="text-center mb-4" data-animation="fadeUp" data-animation-order="1" data-animation-trigger="entered">
+                {{ profile.license}}
+            </p>
+            <p class="text-center mb-4" data-animation="fadeUp" data-animation-order="1" data-animation-trigger="entered">
+                {{ profile.phone_number}}
+            </p>
 
-                <!-- Heading -->
-                <p class="text-center mb-4" data-animation="fadeUp" data-animation-order="1" data-animation-trigger="entered">
-                    {{ profile.bio}}
-                </p>
-                <p class="text-center mb-4" data-animation="fadeUp" data-animation-order="1" data-animation-trigger="entered">
-                    {{ profile.license}}
-                </p>
-                <p class="text-center mb-4" data-animation="fadeUp" data-animation-order="1" data-animation-trigger="entered">
-                    {{ profile.phone_number}}
-                </p>
+        </div>{% endfor %}{% endif %}
 
-            </div>{% endfor %}{% endif %}
+        <br> {% if cardetails %}{% for cardetails in cardetails %}
+        <div class="col-md-6 col-lg-7" style="padding-top: 15%;">
 
-            <br> {% if cardetails %}{% for cardetails in cardetails %}
-            <div class="col-md-6 col-lg-7" style="padding-top: 15%;">
+            <!-- Preheading -->
+            <h1 class="text-black text-muted text-uppercase text-center text-sm" data-animation="fadeUp" data-animation-order="0" data-animation-trigger="entered">
+                {{ cardetails.car_make }}
+            </h1>
 
-                <!-- Preheading -->
-                <h1 class="text-black text-muted text-uppercase text-center text-sm" data-animation="fadeUp" data-animation-order="0" data-animation-trigger="entered">
-                    {{ cardetails.car_make }}
-                </h1>
-
-                <!-- Heading -->
-                <h3 class="text-center mb-4" data-animation="fadeUp" data-animation-order="1" data-animation-trigger="entered">
-                    {{ cardetails.car_plate }}
-                </h3>
+            <!-- Heading -->
+            <h3 class="text-center mb-4" data-animation="fadeUp" data-animation-order="1" data-animation-trigger="entered">
+                {{ cardetails.car_plate }}
+            </h3>
 
 
-            </div>{% endfor %}{% endif %}
-            <!-- / .row -->
-        </div>
-    </div>
-    <<<<<<< HEAD </div>
-
-        <!--The div element for the map -->
-        <div class="col-md-2"></div>
-        <div class="col-md-8" id="map"></div>
-        <div class="col-md-2"></div>
-
-        <script>
-            function initMap() {
-                var Nairobi = {
-                    lat: 1.2921,
-                    lng: 36.8219
-                };
-                var map = new google.maps.Map(document.getElementById('map'), {
-                    zoom: 14,
-                    center: Nairobi
-                });
-                var marker = new google.maps.Marker({
-                    position: Nairobi,
-                    map: map
-                });
-            }
-        </script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCK_t72XTSivEU3POATANkgjcWilYv5UT4&callback=initMap"></script>{% endblock %} =======
+        </div>{% endfor %}{% endif %}
         <!-- / .row -->
+    </div>
+</div>
+</div>
+
+<!--The div element for the map -->
+<div class="col-md-2"></div>
+<div class="col-md-8" id="map"></div>
+<div class="col-md-2"></div>
+
+<script>
+    function initMap() {
+        var Nairobi = {
+            lat: 1.2921,
+            lng: 36.8219
+        };
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 14,
+            center: Nairobi
+        });
+        var marker = new google.maps.Marker({
+            position: Nairobi,
+            map: map
+        });
+    }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCK_t72XTSivEU3POATANkgjcWilYv5UT4&callback=initMap"></script>{% endblock %} =======
+<!-- / .row -->
 </div>
 </div>
 <br>
@@ -97,4 +97,7 @@
   </button>
 
 </div>
-<br><br><br><br><br><br><br><br><br> {% endblock %} >>>>>>> bbf9e9e1f64aa5bdedbebf58e601919e0f337d25
+
+
+
+{% endblock %}

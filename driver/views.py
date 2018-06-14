@@ -4,7 +4,6 @@ from .models import Cardetails
 from django.http import Http404
 from accounts.models import DriverProfile
 from accounts.forms import EditDriver,EditUserForm
-
 from lotOwner.models import Location
 from django.core import serializers
 from django.core.serializers import serialize
