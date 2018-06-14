@@ -4,6 +4,7 @@ from .models import Cardetails
 from django.http import Http404
 from accounts.models import DriverProfile
 from accounts.forms import EditDriver,EditUserForm
+import africastalking
 # Create your views here.
 
 def car_details(request):
@@ -79,3 +80,9 @@ def home(request):
         Http404
 
     return render(request,'user/index.html',{"cardetails":cardetails,"profile":profile,"user":user})
+
+def trigger_payment(request):
+    africastalking.initialize(username='sandbox', api_key='4caafe95008a0a8ba2df43746a62238715dd1f3f3517be3a898402d40542c034')
+    payment = africastalking.Payment
+    res = payment.mobile_checkout(product_name='egesha',phone_number='+254705806372', currency_code='KES', amount=3564)
+    return redirect(home)
