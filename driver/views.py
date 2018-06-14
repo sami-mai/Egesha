@@ -5,7 +5,7 @@ from django.http import Http404
 from accounts.models import DriverProfile
 from accounts.forms import EditDriver,EditUserForm
 import africastalking
-# Create your views here.
+
 
 def car_details(request):
     '''

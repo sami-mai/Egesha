@@ -17,7 +17,7 @@
   <div class="nav text-center">
     <a style="color:#90AD90;" href="#driver">Driver</a>
     <a style="color:#90AD90;" href="#lotOwner">/ Lot Owner</a>
-    <a style="color:#90AD90;" href="#lotManager">/ Lot Operator</a>
+    <a style="color:#90AD90;" href="#lotManager">/ Lot Operation</a>
   </div>
   <!-- END NAVBAR -->
   <hr style="background-color:#90AD90;">
@@ -66,7 +66,7 @@
       <a href="{%url 'driver:home'%}" class="btn btn-primary">Park Now</a>
       <!--  -->
       {%else%}
-      <a href="{%url 'login'%}" class="btn btn-primary">Get Started</a>
+      <a href="{%url 'login'%}" class="btn btn-primary">Park Now</a>
       <!--  -->
       {%endif%}
     </div>
@@ -84,7 +84,7 @@
       <a href="{%url 'lotOwner:Lot' %}" class="btn btn-primary">Lot Owner</a>
       <!--  -->
       {%else%}
-      <a href="{%url 'login'%}" class="btn btn-primary">Get Started</a>
+      <a href="{%url 'login'%}" class="btn btn-primary">Lot Owner</a>
       <!--  -->
       {%endif%}
     </div>
@@ -103,10 +103,10 @@
         for parking.
       </p>
       {%if user.is_authenticated%}
-      <a href="#" class="btn btn-primary">Lot Operator</a>
+      <a href="{%url 'lotManager:dashboard'%}" class="btn btn-primary">Lot Operation</a>
       <!--  -->
       {%else%}
-      <a href="{%url 'login'%}" class="btn btn-primary">Lot Operator</a>
+      <a href="{%url 'login'%}" class="btn btn-primary">Lot Operation</a>
       <!--  -->
       {%endif%}
     </div>
