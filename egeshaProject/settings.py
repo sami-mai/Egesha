@@ -92,10 +92,10 @@ WSGI_APPLICATION = 'egeshaProject.wsgi.application'
 
 DATABASES = {
    'default': {
-         'ENGINE': config('DB_ENGINE'),
-         'NAME': config('DB_NAME'),
-         'USER': config('DB_USER'),
-         'PASSWORD': config('DB_PASSWORD'),
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'egesha',
+            'USER': 'sami_mai',
+            'PASSWORD': 'SmaiDB',
          }
 }
 
