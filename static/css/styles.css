@@ -1,20 +1,13 @@
 html {
-  /* background: #F4E8C1; */
   position: relative;
   min-height: 100%;
 }
 
 body {
-  background: #A0C1B9;
   /* Margin bottom by footer height */
   margin-bottom: 60px;
   /* Move down content because we have a fixed navbar that is 50px tall */
   /* padding-top: 50px; */
-}
-
-#map {
-  height: 900px;
-  width: 100%;
 }
 
 /* Hide for mobile, show later */
@@ -35,9 +28,6 @@ body {
     overflow-x: hidden;
     overflow-y: auto;
     /* Scrollable contents if viewport is shorter than content. */
-    background-color: #70A0AF;
-    border-right: 1px solid #706993;
-    border-top: 1px solid #706993;
   }
 }
 
