@@ -93,7 +93,7 @@ WSGI_APPLICATION = 'egeshaProject.wsgi.application'
 DATABASES = {
    'default': {
          'ENGINE': 'django.db.backends.postgresql',
-         'NAME': 'owner',
+         'NAME': 'lot',
          'USER': 'maryanne',
          'PASSWORD': '1234@5',
          }
