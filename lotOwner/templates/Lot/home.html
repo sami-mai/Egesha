@@ -1,6 +1,96 @@
 {%extends 'Lot/base.html'%} {% load bootstrap3 %} {% load static %}
 <!--  -->
 {% block content %}
+<nav class="main-menu">
+            <ul>
+                <li>
+                    <a href="http://justinfarrow.com">
+                        <i class="fa fa-home fa-2x"></i>
+                        <span class="nav-text">
+                            Dashboard
+                        </span>
+                    </a>
+
+                </li>
+                <li class="has-subnav">
+                    <a href="#">
+                        <i class="fa fa-laptop fa-2x"></i>
+                        <span class="nav-text">
+                            Stars Components
+                        </span>
+                    </a>
+
+                </li>
+                <li class="has-subnav">
+                    <a href="#">
+                       <i class="fa fa-list fa-2x"></i>
+                        <span class="nav-text">
+
+                        </span>
+                    </a>
+
+                </li>
+                <li class="has-subnav">
+                    <a href="#">
+                       <i class="fa fa-home fa-2x"></i>
+                        <span class="nav-text">
+                           Lot Owner
+                        </span>
+                    </a>
+
+                </li>
+                <hr>
+                {% for current in current_profile %}
+                <li>
+                    <a href="#">
+                        <i class="fa fa-user fa-2x"></i>
+                        <span class="nav-text">
+                            <img src="{{current.avatar.url}}" class="img-circle" style="height:100px;width:100px;" alt="Image">
+                        </span>
+                    </a>
+                </li>
+                {% endfor %}
+                <li>
+                  <hr>
+                    <a href="#">
+                        <i class="fa fa-edit fa-2x"></i>
+                        <span class="nav-text">
+                           Edit profile
+                        </span>
+                    </a>
+                </li>
+                <li>
+                  <hr>
+                   <a href="#">
+                       <i class="fa fa-plus fa-2x"></i>
+                        <span class="nav-text">
+                            Add lot details
+                        </span>
+                    </a>
+                </li>
+                <li>
+                  <hr>
+                   <a href="#">
+                        <i class="fa fa-map-marker fa-2x"></i>
+                        <span class="nav-text">
+                            Maps
+                        </span>
+                    </a>
+                </li>
+              <hr>
+            </ul>
+
+            <ul class="logout">
+                <li>
+                   <a href="#">
+                         <i class="fa fa-power-off fa-2x"></i>
+                        <span class="nav-text">
+                            Logout
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
 <br><br><br><br> {% for current in current_profile %}
 <div class="container">
   <h1 class="text-center" style="font-family: 'Raleway', sans-serif;">Lot Owner</h1>
@@ -27,17 +117,22 @@
 </div>
 
 {% endfor %}
-<hr>
+
 
 
 <div class="container">
+  <hr>
   {% for lot in lots %}
   <div class="col-md-4 col-sm-6 col-xs-12">
-    <h2 style="font-family: 'Raleway', sans-serif">Name: {{lot.Name_of_lot}}</h2>
-    <h2 style="font-family: 'Raleway', sans-serif">Total spaces: {{lot.Total_number_of_spaces}}</h2>
-    <img src="{{lot.Image_of_Lot.url}}" class="img-responsive" style="" alt="Image">
-  </div>
 
+
+    <img src="{{lot.Image_of_Lot.url}}" class="img-responsive" style="height:200%;width:200%" alt="Image">
+
+    <h2 style="font-family: 'Raleway', sans-serif">Name: {{lot.Name_of_lot}}</h2>
+    <p style="font-family: 'Raleway', sans-serif">Total spaces: {{lot.Total_number_of_spaces}}</p>
+
+
+</div>
   {% empty %}
   <ul>
     <li>
