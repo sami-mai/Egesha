@@ -16,4 +16,4 @@ class LotDetailsForm(forms.ModelForm):
     '''
     class Meta:
         model=LotDetails
-        fields=('Name_of_lot','Image_of_Lot','Total_number_of_spaces')
+        fields=('Name_of_lot','Image_of_Lot','Total_number_of_spaces','location')
