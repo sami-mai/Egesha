@@ -1,17 +1,20 @@
 {%extends 'Lot/base.html'%} {% load bootstrap3 %} {% load static %}
 <!--  -->
 {% block content %}
-<br><br><br><br><br><br><br> {% if current_profile %}
+
+
+ {% for current in  current_profile %}
 <div class="container">
   <h1 class="text-center" style="font-family: 'Raleway', sans-serif;">Lot Owner</h1>
 </div>
 <div class="container">
-  <img src="{{current_profile.avatar.url}}" class="img-responsive" style="" alt="Image">
-  <h2 style="font-family: 'Raleway', sans-serif">Name: {{current_profile.user.username}}</h2>
-  <h2 style="font-family: 'Raleway', sans-serif">Phone_Number: {{current_profile.phone_number}}</h2>
+  <img src="{{current.avatar.url}}" class="img-responsive" style="height:35%;width:45%;" alt="Image">
+  <h2 style="font-family: 'Raleway', sans-serif">Name: {{current.user.username}}</h2>
+  <h2 style="font-family: 'Raleway', sans-serif">Phone_Number: {{current.phone_number}}</h2>
   <h2 style="font-family: 'Raleway', sans-serif">National_id: {{current_profile.national_id}}</h2>
 </div>
-{% else %}
+
+{% empty %}
 <div class="container">
 
   <h1 class="text-center" style="font-family: 'Raleway', sans-serif;">Create Profile</h1>
@@ -24,8 +27,8 @@
   </form>
 
 </div>
-<!--  -->
-{% endif %}
+
+{% endfor %}
 <hr>
 
 
@@ -49,20 +52,7 @@
 
 </div>
 <hr>
-<div id="map">
-  hello
-</div>
-<div id="form">
-  <form class="navbar-form" role="search" action="{% url 'lotOwner:Map' %}">
 
-    <div class="input-group">
-      <input type="text" class="form-control" placeholder="Enter location " name="address">
-      <div class="input-group-btn">
-        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-      </div>
-    </div>
-
-  </form>
 
 </div>
 {% endblock %}
@@ -71,92 +61,14 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 {% bootstrap_javascript %}
-<script>
-  // we declare the following as global variables
-  var map;
-  var marker;
-  var infowindow;
-  var messagewindow;
-  var marker1;
-  var $lat;
-  var $lon;
 
-  function initMap() {
-    //location of Nairobi is stored in a varibale
-    var myLatLng = {
-      lat: -1.28333,
-      lng: 36.81667
-    };
-    var mombasa = {
-      lat: -1.3007,
-      lng: 36.7849
-    };
-    map = new google.maps.Map(document.getElementById('map'), {
-      center: myLatLng,
-      zoom: 13
-    });
-    // the marker is positioned at Nairobi
-    //the infowindow retrives the form element when clicking a marker
-    marker1 = new google.maps.Marker({
-      position: myLatLng,
-      map: map,
-    })
-
-
-    infowindow = new google.maps.InfoWindow({
-      content: document.getElementById('form')
-    });
-    // retrives the message element on saving the info window
-    messagewindow = new google.maps.InfoWindow({
-      content: document.getElementById('message')
-
-    });
-    //we assign a click listener  with the addListener that creates a marker when the user clicks the map
-    google.maps.event.addListener(map, 'click', function(event) {
-
-      marker = new google.maps.Marker({
-        position: event.latLng,
-        map: map
-      });
-      google.maps.event.addListener(marker, 'click', function() {
-        infowindow.open(map, marker);
-
-      });
-
-    });
-
-
-    // we create a variable called spots that store the spots that we passed from the view function
-    var spots = JSON.parse('{{spots_json|safe}}');
-    console.log(spots);
-    for (var i = 0; i < spots.length; i++) {
-      console.log('yess its working');
-      //we store the lat and long in the variables
-      var lat = parseFloat(spots[i].fields.latitude)
-      var lng = parseFloat(spots[i].fields.longitude)
-      var name = spots[i].fields.name_of_location
-      //Assign them positions lat being index 0
-      coords = [lat, lng]
-      //we log them to the console to check if the function is working
-      //console.log(coords);
-      console.log(name)
-      var LatLng = new google.maps.LatLng(coords[0], coords[1]);
-      var marker = new google.maps.Marker({
-        position: LatLng,
-        map: map
-      });
-
-    }
-
-  }
-</script>
 <!--we load the api from the specified api, the async attribute allows the page to
 
 
 
 
 </script>
-<!--we load the api from the specified api, the async attribute allows the page to
+<!-we load the api from the specified api, the async attribute allows the page to
 
     load as the api loads the call back paramater executes the initMap() function that specifies the latitude and longitude of where the map will
     be centered
