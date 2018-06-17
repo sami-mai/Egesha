@@ -1,17 +1,25 @@
 {%extends 'Lot/base.html'%} {% load bootstrap3 %} {% load static %}
 <!--  -->
 {% block content %}
-<br><br><br><br><br><br><br> {% if current_profile %}
+<br><br><br><br> {% for current in current_profile %}
 <div class="container">
     <h1 class="text-center" style="font-family: 'Raleway', sans-serif;">Lot Owner</h1>
 </div>
 <div class="container">
+<<<<<<< HEAD
     <img src="{{current_profile.avatar.url}}" class="img-responsive" style="" alt="Image">
     <h2 style="font-family: 'Raleway', sans-serif">Name: {{current_profile.user.username}}</h2>
     <h2 style="font-family: 'Raleway', sans-serif">Phone_Number: {{current_profile.phone_number}}</h2>
     <h2 style="font-family: 'Raleway', sans-serif">National_id: {{current_profile.national_id}}</h2>
+=======
+  <img src="{{current.avatar.url}}" class="img-responsive" style="height:35%;width:45%;" alt="Image">
+  <h2 style="font-family: 'Raleway', sans-serif">Name: {{current.user.username}}</h2>
+  <h2 style="font-family: 'Raleway', sans-serif">Phone_Number: {{current.phone_number}}</h2>
+  <h2 style="font-family: 'Raleway', sans-serif">National_id: {{current.national_id}}</h2>
+>>>>>>> b8522dc85b95b6c65a1574b1dcc38303c3f6b411
 </div>
-{% else %}
+
+{% empty %}
 <div class="container">
 
     <h1 class="text-center" style="font-family: 'Raleway', sans-serif;">Create Profile</h1>
@@ -24,8 +32,8 @@
     </form>
 
 </div>
-<!--  -->
-{% endif %}
+
+{% endfor %}
 <hr>
 
 
@@ -49,6 +57,7 @@
 
 </div>
 <hr>
+<<<<<<< HEAD
 <div id="map">
     hello
 </div>
@@ -63,6 +72,9 @@
         </div>
 
     </form>
+=======
+
+>>>>>>> b8522dc85b95b6c65a1574b1dcc38303c3f6b411
 
 </div>
 {% endblock %}
@@ -71,6 +83,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 {% bootstrap_javascript %}
+<<<<<<< HEAD
 <script>
     // we declare the following as global variables
     var map;
@@ -151,13 +164,16 @@
 
     }
 </script>
+=======
+
+>>>>>>> b8522dc85b95b6c65a1574b1dcc38303c3f6b411
 <!--we load the api from the specified api, the async attribute allows the page to
 
 
 
 
 </script>
-<!--we load the api from the specified api, the async attribute allows the page to
+<!-we load the api from the specified api, the async attribute allows the page to
 
     load as the api loads the call back paramater executes the initMap() function that specifies the latitude and longitude of where the map will
     be centered

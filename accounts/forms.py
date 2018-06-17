@@ -11,19 +11,19 @@ class EditUserForm(forms.ModelForm):
 class EditDriver(forms.ModelForm):
     class Meta:
         model = DriverProfile
-        fields = ['avatar', 'bio', 'license', 'phone_number']
+        fields = ['license', 'phone_number', 'avatar', 'bio']
         exclude = ['user', 'join_date']
 
 
 class EditManager(forms.ModelForm):
     class Meta:
         model = ManagerProfile
-        fields = ['avatar', 'bio', 'national_id', 'phone_number']
+        fields = ['national_id', 'phone_number', 'avatar', 'bio']
         exclude = ['user', 'join_date']
 
 
 class EditOwner(forms.ModelForm):
     class Meta:
         model = OwnerProfile
-        fields = ['avatar', 'bio', 'national_id', 'phone_number']
+        fields = ['national_id', 'phone_number', 'avatar', 'bio']
         exclude = ['user', 'join_date']
