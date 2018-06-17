@@ -92,8 +92,8 @@ def home(request):
 def trigger_payment(request):
     africastalking.initialize(username='sandbox', api_key='4caafe95008a0a8ba2df43746a62238715dd1f3f3517be3a898402d40542c034')
     payment = africastalking.Payment
-    res = payment.mobile_checkout(product_name='egesha',phone_number='+254705806372', currency_code='KES', amount=3564)
-    return redirect('/driver/')
+    res = payment.mobile_checkout(product_name='egesha',phone_number='+254720676920', currency_code='KES', amount=4000)
+    return redirect('/driver/status/')
 
 def search_location(request):
     search_term=request.GET.get("location")
@@ -108,3 +108,8 @@ def search_location(request):
     searched_locations=Location.search(search_term)
 
     return render (request,'user/search.html',{"coords_json":coords_json,"spots_json":spots_json,"searched_locations":searched_locations})
+
+def status(request):
+    
+
+    return render (request,'user/status.html')
