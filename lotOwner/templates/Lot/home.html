@@ -137,7 +137,7 @@
           <!-- <div class="col-md-4 col-sm-6 col-xs-12"> -->
 
 
-          <a href="{% url 'lotOwner:Location' lot.id %}"><img src="{{lot.Image_of_Lot.url}}" class="img-responsive img-fluid img-rounded" style="height:250px;width:320px;" alt="Image"</a>
+          <a href="{% url 'lotOwner:Location' lot.id %}"><img src="{{lot.Image_of_Lot.url}}" class="img-responsive img-fluid img-rounded" style="height:250px;width:320px;" alt="Image"></a>
 
           <h2 style="font-family: 'Raleway', sans-serif">Lot Name: {{lot.Name_of_lot}}</h2>
           <p style="font-family: 'Raleway', sans-serif">Total spaces: {{lot.Total_number_of_spaces}}</p>
@@ -226,27 +226,11 @@
     })
 
 
-    infowindow = new google.maps.InfoWindow({
-      content: document.getElementById('form')
-    });
-    // retrives the message element on saving the info window
-    messagewindow = new google.maps.InfoWindow({
-      content: document.getElementById('message')
 
-    });
     //we assign a click listener  with the addListener that creates a marker when the user clicks the map
-    google.maps.event.addListener(map, 'click', function(event) {
 
-      marker = new google.maps.Marker({
-        position: event.latLng,
-        map: map
-      });
-      google.maps.event.addListener(marker, 'click', function() {
-        infowindow.open(map, marker);
+      
 
-      });
-
-    });
 
 
     // we create a variable called spots that store the spots that we passed from the view function
@@ -271,6 +255,7 @@
 
     }
 
+
   }
 </script>
 <!--we load the api from the specified api, the async attribute allows the page to
@@ -278,6 +263,7 @@
   be centered
 -->
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmrKc7FjQwLm9vEtseo5LK7Z6M_1aPm5k&callback=initMap"></script>
+
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.0/jquery.matchHeight-min.js"></script>
 

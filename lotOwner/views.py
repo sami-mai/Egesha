@@ -37,9 +37,15 @@ def home(request):
             return redirect('/lot/owner/')
     else:
         form1=OwnerProfileForm()
+    spots=list(Location.objects.all())
 
 
-    return render (request,'Lot/home.html',{"lots":lots,"current_profile":current_profile,"form1":form1,"location":location})
+    print(spots)
+    coords={"1":1,"2":2}
+    coords_json=json.dumps(coords,cls=DjangoJSONEncoder)
+    spots_json=serializers.serialize('json',spots,cls=DjangoJSONEncoder)
+
+    return render (request,'Lot/home.html',{"lots":lots,"current_profile":current_profile,"form1":form1,"location":location,"coords_json":coords_json,"spots_json":spots_json})
 
 
 def Lotdetail(request,profile_id):
