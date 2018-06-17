@@ -126,10 +126,12 @@
   <div class="col-md-4 col-sm-6 col-xs-12">
 
 
-    <img src="{{lot.Image_of_Lot.url}}" class="img-responsive" style="height:200%;width:200%" alt="Image">
+    <a href="{% url 'lotOwner:Location' lot.id %}"><img src="{{lot.Image_of_Lot.url}}" class="img-responsive" style="height:200%;width:200%" alt="Image"</a>
 
     <h2 style="font-family: 'Raleway', sans-serif">Name: {{lot.Name_of_lot}}</h2>
     <p style="font-family: 'Raleway', sans-serif">Total spaces: {{lot.Total_number_of_spaces}}</p>
+
+    <p style="font-family: 'Raleway', sans-serif">Located at: {{lot.locations|default:"--" }}</p>
 
 
 </div>

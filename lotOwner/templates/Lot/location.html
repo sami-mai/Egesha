@@ -1,8 +1,8 @@
-{% load bootstrap3 %} {% load static %}
-
+{%extends 'Lot/base.html'%}{% load bootstrap3 %} {% load static %}
+{% block content %}
 <h3 class="page-header text-center">Set Lot Location</h3>
 <div id="form">
-  <form class="navbar-form" role="search" action="{% url 'lotOwner:Map' %}">
+  <form class="navbar-form" role="search" action="{% url 'lotOwner:Map' lot.id %}">
 
     <div class="input-group">
       <input type="text" class="form-control" placeholder="Enter Lot location " name="address">
@@ -19,7 +19,7 @@
 
 <br><br><br>
 
-
+{% endblock %}
 <!--  -->
 {% block scripts %}
 

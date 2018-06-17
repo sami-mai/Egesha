@@ -29,7 +29,7 @@
 
           <li class=""><a href="{% url 'lotOwner:Details' request.user.id %}" style="font-family: 'Raleway', sans-serif;font-size:25px;color:black;font-size: 1.2em;">Add Lot Details<span class="sr-only">(current)</span></a></li>
 
-          <!--li class=""><a href="{% url 'lotOwner:Location' %}" style="font-family: 'Raleway', sans-serif;font-size:25px;color:black;font-size: 1.2em;">Add Lot Location<span class="sr-only">(current)</span></a></li-->
+
           {% else %}
 
         {% endif %}
@@ -52,7 +52,7 @@
 
               <li class=""><a href="{% url 'lotOwner:Details' request.user.id %}" style="font-family: 'Raleway', sans-serif;font-size:25px;color:black;font-size: 1.2em;">Edit Lot Details<span class="sr-only">(current)</span></a></li>
 
-              <!-- <li class=""><a href="{% url 'lotOwner:Location' %}" style="font-family: 'Raleway', sans-serif;font-size:25px;color:black;font-size: 1.2em;">Add Lot Location<span class="sr-only">(current)</span></a></li> -->
+            
               {% else %}
               <!--  -->
               {% endif %}
