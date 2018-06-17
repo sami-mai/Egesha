@@ -14,8 +14,8 @@ def on_finish(error, response):
      raise error
  print(response)
 
-number=['+254718503541']
+number=['+254722163292']
 
 
 
-sms.send("Space is Booked!{}" .format(rad1),['+254718503541'] , callback=on_finish)
+sms.send("Space is Booked!{}" .format(rad1),['+254722163292'] , callback=on_finish)

@@ -19,11 +19,17 @@
   {% bootstrap_css %}
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Lobster|Montserrat|Raleway|Cookie" rel="stylesheet">
-  <!-- <link rel="stylesheet" href="{% static 'css/styles.css' %}"> -->
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
   <style>
     #map {
-      height: 100%;
-      width: 100%;
+      height: 650px;
+      width: 950px;
+
+    }
+
+    #map_1 {
+      height: 650px;
+      width: 750px;
 
     }
 
@@ -35,277 +41,299 @@
       margin: 0;
       padding: 0;
     }
+
     @import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
-}
-@import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
-.fa-2x {
-font-size: 2em;
-}
-.fa {
-position: relative;
-display: table-cell;
-width: 60px;
-height: 40px;
-text-align: center;
-vertical-align: middle;
-font-size:20px;
-}
+    }
+
+    @import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
+    .fa-2x {
+      font-size: 2em;
+    }
+
+    .fa {
+      position: relative;
+      display: table-cell;
+      width: 60px;
+      height: 40px;
+      text-align: center;
+      vertical-align: middle;
+      font-size: 20px;
+    }
 
 
-.main-menu:hover,nav.main-menu.expanded {
-width:250px;
-overflow:visible;
-}
+    .main-menu:hover,
+    nav.main-menu.expanded {
+      width: 250px;
+      overflow: visible;
+    }
 
-.main-menu {
-color:black;
-background-color:#D5DFD5;
-border-right:1px solid #e5e5e5;
-position:absolute;
-top:0;
-bottom:0;
-height:100%;
-left:0;
-width:60px;
-overflow:hidden;
--webkit-transition:width .05s linear;
-transition:width .05s linear;
--webkit-transform:translateZ(0) scale(1,1);
-z-index:1000;
-}
+    .main-menu {
+      color: black;
+      background-color: #D5DFD5;
+      border-right: 1px solid #e5e5e5;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      height: 100%;
+      left: 0;
+      width: 60px;
+      overflow: hidden;
+      -webkit-transition: width .05s linear;
+      transition: width .05s linear;
+      -webkit-transform: translateZ(0) scale(1, 1);
+      z-index: 1000;
+    }
 
-.main-menu>ul {
-margin:7px 0;
-}
+    .main-menu>ul {
+      margin: 7px 0;
+    }
 
-.main-menu li {
-position:relative;
-display:block;
-width:250px;
-}
+    .main-menu li {
+      position: relative;
+      display: block;
+      width: 250px;
+    }
 
-.main-menu li>a {
-position:relative;
-display:table;
-border-collapse:collapse;
-border-spacing:0;
-color:black;
- font-family: arial;
-font-size: 14px;
-text-decoration:none;
--webkit-transform:translateZ(0) scale(1,1);
--webkit-transition:all .1s linear;
-transition:all .1s linear;
+    .main-menu li>a {
+      position: relative;
+      display: table;
+      border-collapse: collapse;
+      border-spacing: 0;
+      color: black;
+      font-family: arial;
+      font-size: 14px;
+      text-decoration: none;
+      -webkit-transform: translateZ(0) scale(1, 1);
+      -webkit-transition: all .1s linear;
+      transition: all .1s linear;
 
-}
+    }
 
-.main-menu .nav-icon {
-position:relative;
-display:table-cell;
-width:60px;
-height:36px;
-text-align:center;
-vertical-align:middle;
-font-size:18px;
-}
+    .main-menu .nav-icon {
+      position: relative;
+      display: table-cell;
+      width: 60px;
+      height: 36px;
+      text-align: center;
+      vertical-align: middle;
+      font-size: 18px;
+    }
 
-.main-menu .nav-text {
-position:relative;
-display:table-cell;
-vertical-align:middle;
-width:190px;
-  font-family: 'Titillium Web', sans-serif;
-}
+    .main-menu .nav-text {
+      position: relative;
+      display: table-cell;
+      vertical-align: middle;
+      width: 190px;
+      font-family: 'Titillium Web', sans-serif;
+    }
 
-.main-menu>ul.logout {
-position:absolute;
-left:0;
-bottom:0;
-}
+    .main-menu>ul.logout {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+    }
 
-.no-touch .scrollable.hover {
-overflow-y:hidden;
-}
+    .no-touch .scrollable.hover {
+      overflow-y: hidden;
+    }
 
-.no-touch .scrollable.hover:hover {
-overflow-y:auto;
-overflow:visible;
-}
+    .no-touch .scrollable.hover:hover {
+      overflow-y: auto;
+      overflow: visible;
+    }
 
-a:hover,a:focus {
-text-decoration:none;
-}
+    a:hover,
+    a:focus {
+      text-decoration: none;
+    }
 
-nav {
--webkit-user-select:none;
--moz-user-select:none;
--ms-user-select:none;
--o-user-select:none;
-user-select:none;
-}
+    nav {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      -o-user-select: none;
+      user-select: none;
+    }
 
-nav ul,nav li {
-outline:0;
-margin:0;
-padding:0;
-}
-.main-menu li:hover>a,nav.main-menu li.active>a,.dropdown-menu>li>a:hover,.dropdown-menu>li>a:focus,.dropdown-menu>.active>a,.dropdown-menu>.active>a:hover,.dropdown-menu>.active>a:focus,.no-touch .dashboard-page nav.dashboard-menu ul li:hover a,.dashboard-page nav.dashboard-menu ul li.active a {
-;
-background-color:white;
-}
-.area {
-float: left;
-background: #e2e2e2;
-width: 100%;
-height: 100%;
-}
-@font-face {
-  font-family: 'Titillium Web';
-  font-style: normal;
-  font-weight: 300;
-  src: local('Titillium WebLight'), local('TitilliumWeb-Light'), url(http://themes.googleusercontent.com/static/fonts/titilliumweb/v2/anMUvcNT0H1YN4FII8wpr24bNCNEoFTpS2BTjF6FB5E.woff) format('woff');
-}
-@font-face {
-	font-weight: normal;
-	font-style: normal;
-	font-family: 'feathericons';
-	src:url('../fonts/feathericons/feathericons.eot?-8is7zf');
-	src:url('../fonts/feathericons/feathericons.eot?#iefix-8is7zf') format('embedded-opentype'),
-		url('../fonts/feathericons/feathericons.woff?-8is7zf') format('woff'),
-		url('../fonts/feathericons/feathericons.ttf?-8is7zf') format('truetype'),
-		url('../fonts/feathericons/feathericons.svg?-8is7zf#feathericons') format('svg');
-}
+    nav ul,
+    nav li {
+      outline: 0;
+      margin: 0;
+      padding: 0;
+    }
 
-.grid {
-	position: relative;
-	margin: 0 auto;
-	padding: 1em 0 4em;
-	max-width: 1000px;
-	list-style: none;
-	text-align: center;
-}
+    .main-menu li:hover>a,
+    nav.main-menu li.active>a,
+    .dropdown-menu>li>a:hover,
+    .dropdown-menu>li>a:focus,
+    .dropdown-menu>.active>a,
+    .dropdown-menu>.active>a:hover,
+    .dropdown-menu>.active>a:focus,
+    .no-touch .dashboard-page nav.dashboard-menu ul li:hover a,
+    .dashboard-page nav.dashboard-menu ul li.active a {
+      ;
+      background-color: white;
+    }
 
-/* Common style */
-.grid figure {
-	position: relative;
+    .area {
+      float: left;
+      background: #e2e2e2;
+      width: 100%;
+      height: 100%;
+    }
 
-	overflow: hidden;
-	margin: 10px 1%;
-	min-width: 320px;
-	max-width: 480px;
-	max-height: 360px;
-	width: 48%;
-	background: #3085a3;
-	text-align: center;
-	cursor: pointer;
-}
+    @font-face {
+      font-family: 'Titillium Web';
+      font-style: normal;
+      font-weight: 300;
+      src: local('Titillium WebLight'), local('TitilliumWeb-Light'), url(http://themes.googleusercontent.com/static/fonts/titilliumweb/v2/anMUvcNT0H1YN4FII8wpr24bNCNEoFTpS2BTjF6FB5E.woff) format('woff');
+    }
 
-.grid figure img {
-	position: relative;
-	display: block;
-	height: ;
-	width: ;
-	opacity: 0.8;
-}
+    @font-face {
+      font-weight: normal;
+      font-style: normal;
+      font-family: 'feathericons';
+      src: url('../fonts/feathericons/feathericons.eot?-8is7zf');
+      src: url('../fonts/feathericons/feathericons.eot?#iefix-8is7zf') format('embedded-opentype'),
+      url('../fonts/feathericons/feathericons.woff?-8is7zf') format('woff'),
+      url('../fonts/feathericons/feathericons.ttf?-8is7zf') format('truetype'),
+      url('../fonts/feathericons/feathericons.svg?-8is7zf#feathericons') format('svg');
+    }
 
-.grid figure figcaption {
-	padding: 2em;
-	color: #fff;
-	text-transform: uppercase;
-	font-size: 1.25em;
-	-webkit-backface-visibility: hidden;
-	backface-visibility: hidden;
-}
+    .grid {
+      position: relative;
+      margin: 0 auto;
+      padding: 1em 0 4em;
+      max-width: 1000px;
+      list-style: none;
+      text-align: center;
+    }
 
-.grid figure figcaption::before,
-.grid figure figcaption::after {
-	pointer-events: none;
-}
+    /* Common style */
 
-.grid figure figcaption,
-.grid figure figcaption > a {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-}
+    .grid figure {
+      position: relative;
 
-/* Anchor will cover the whole item by default */
-/* For some effects it will show as a button */
-.grid figure figcaption > a {
-	z-index: 1000;
-	text-indent: 200%;
-	white-space: nowrap;
-	font-size: 0;
-	opacity: 0;
-}
+      overflow: hidden;
+      margin: 10px 1%;
+      min-width: 320px;
+      max-width: 480px;
+      max-height: 360px;
+      width: 48%;
+      background: #3085a3;
+      text-align: center;
+      cursor: pointer;
+    }
 
-.grid figure h2 {
-	word-spacing: -0.15em;
-	font-weight: 300;
-}
+    .grid figure img {
+      position: relative;
+      display: block;
+      height: ;
+      width: ;
+      opacity: 0.8;
+    }
 
-.grid figure h2 span {
-	font-weight: 800;
-}
+    .grid figure figcaption {
+      padding: 2em;
+      color: #fff;
+      text-transform: uppercase;
+      font-size: 1.25em;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
 
-.grid figure h2,
-.grid figure p {
-	margin: 0;
-}
+    .grid figure figcaption::before,
+    .grid figure figcaption::after {
+      pointer-events: none;
+    }
 
-.grid figure p {
-	letter-spacing: 1px;
-	font-size: 68.5%;
-}
-figure.effect-ruby {
-	background-color: #17819c;
-}
+    .grid figure figcaption,
+    .grid figure figcaption>a {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
 
-figure.effect-ruby img {
-	opacity: 0.7;
-	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
-	transition: opacity 0.35s, transform 0.35s;
-	-webkit-transform: scale(1.15);
-	transform: scale(1.15);
-}
+    /* Anchor will cover the whole item by default */
 
-figure.effect-ruby:hover img {
-	opacity: 0.5;
-	-webkit-transform: scale(1);
-	transform: scale(1);
-}
+    /* For some effects it will show as a button */
 
-figure.effect-ruby h2 {
-	margin-top: 20%;
-	-webkit-transition: -webkit-transform 0.35s;
-	transition: transform 0.35s;
-	-webkit-transform: translate3d(0,20px,0);
-	transform: translate3d(0,20px,0);
-}
+    .grid figure figcaption>a {
+      z-index: 1000;
+      text-indent: 200%;
+      white-space: nowrap;
+      font-size: 0;
+      opacity: 0;
+    }
 
-figure.effect-ruby p {
-	margin: 1em 0 0;
-	padding: 3em;
-	border: 1px solid #fff;
-	opacity: 0;
-	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
-	transition: opacity 0.35s, transform 0.35s;
-	-webkit-transform: translate3d(0,20px,0) scale(1.1);
-	transform: translate3d(0,20px,0) scale(1.1);
-}
+    .grid figure h2 {
+      word-spacing: -0.15em;
+      font-weight: 300;
+    }
 
-figure.effect-ruby:hover h2 {
-	-webkit-transform: translate3d(0,0,0);
-	transform: translate3d(0,0,0);
-}
+    .grid figure h2 span {
+      font-weight: 800;
+    }
 
-figure.effect-ruby:hover p {
-	opacity: 1;
-	-webkit-transform: translate3d(0,0,0) scale(1);
-	transform: translate3d(0,0,0) scale(1);
-}
+    .grid figure h2,
+    .grid figure p {
+      margin: 0;
+    }
+
+    .grid figure p {
+      letter-spacing: 1px;
+      font-size: 68.5%;
+    }
+
+    figure.effect-ruby {
+      background-color: #17819c;
+    }
+
+    figure.effect-ruby img {
+      opacity: 0.7;
+      -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+      transition: opacity 0.35s, transform 0.35s;
+      -webkit-transform: scale(1.15);
+      transform: scale(1.15);
+    }
+
+    figure.effect-ruby:hover img {
+      opacity: 0.5;
+      -webkit-transform: scale(1);
+      transform: scale(1);
+    }
+
+    figure.effect-ruby h2 {
+      margin-top: 20%;
+      -webkit-transition: -webkit-transform 0.35s;
+      transition: transform 0.35s;
+      -webkit-transform: translate3d(0, 20px, 0);
+      transform: translate3d(0, 20px, 0);
+    }
+
+    figure.effect-ruby p {
+      margin: 1em 0 0;
+      padding: 3em;
+      border: 1px solid #fff;
+      opacity: 0;
+      -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+      transition: opacity 0.35s, transform 0.35s;
+      -webkit-transform: translate3d(0, 20px, 0) scale(1.1);
+      transform: translate3d(0, 20px, 0) scale(1.1);
+    }
+
+    figure.effect-ruby:hover h2 {
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+
+    figure.effect-ruby:hover p {
+      opacity: 1;
+      -webkit-transform: translate3d(0, 0, 0) scale(1);
+      transform: translate3d(0, 0, 0) scale(1);
+    }
   </style>
   <!--  -->
   {% endblock %}
