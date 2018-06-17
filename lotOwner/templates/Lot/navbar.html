@@ -8,6 +8,8 @@
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -16,18 +18,19 @@
     <div class="container-fluid">
       <div class="navbar-header">
         <a class="navbar-brand" href="/" style="padding-top:0px;">
-          <img class="img-responsive img-fluid" src="{% static '/images/logo.png' %}" width="65px" height="65px" alt="icon"><span></span>
-        </a>
+                    <img class="img-responsive img-fluid" src="{% static '/images/logo.png' %}" width="65px" height="65px" alt="icon"><span></span>
+                </a>
         <a class="navbar-brand" href="/lot/owner/" style="font-family: 'Lobster', cursive; font-weight: 700;font-size: 2.5em;"><strong>Egesha</strong></a>
       </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
           {% if current_profile %}
-          <li class=""><a href="{% url 'lotOwner:Details' request.user.id %}" style="font-family: 'Raleway', sans-serif;font-size:25px;color:black;font-size: 1.2em;">Add Lot Details<span class="sr-only">(current)</span></a></li>
-          <li class=""><a href="{% url 'lotOwner:Location' %}" style="font-family: 'Raleway', sans-serif;font-size:25px;color:black;font-size: 1.2em;">Add Lot Location<span class="sr-only">(current)</span></a></li>
-          {%else%}
-          <!--  -->
-          {%endif%}
+
+
+          <!-- <li class=""><a href="{% url 'lotOwner:Details' request.user.id %}" style="font-family: 'Raleway', sans-serif;font-size:25px;color:black;font-size: 1.2em;">Add Lot Details<span class="sr-only">(current)</span></a></li> -->
+
+          <!--li class=""><a href="{% url 'lotOwner:Location' %}" style="font-family: 'Raleway', sans-serif;font-size:25px;color:black;font-size: 1.2em;">Add Lot Location<span class="sr-only">(current)</span></a></li-->
+          {% else %} {% endif %}
         </ul>
         <ul class="nav navbar-nav navbar-right pull-right">
           <li>
@@ -40,21 +43,22 @@
             <a href="#" style="font-family: 'Raleway', sans-serif; color:black;font-size: 1.2em;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><strong>{{user.username|title}} </strong><span class="caret"></span></a>
             <ul class="dropdown-menu">
 
-              <li class="text-center text-muted" style="font-family: 'Raleway', sans-serif; color:black;font-size: 1.2em;"><strong>@ {{user.username}}</strong></li>
+              <li class="text-center text-muted" style="font-family: 'Montserrat', sans-serif; color:black;font-size: 1.2em;"><strong>@ {{user.username}}</strong></li>
               <li role="separator" class="divider"></li>
-              <li><a href="{#}" style="font-family: 'Raleway', sans-serif; color:black;font-size: 1.2em;">Edit Profile</a></li>
-              <li>
-                <a href="#" style="font-family: 'Raleway', sans-serif; color:black;font-size: 1.2em;">Your profile</a>
-              </li>
+              <li><a href="#" style="font-family: 'Raleway', sans-serif; color:black;font-size: 1.2em;">Edit Profile</a></li>
+              {% if current_profile %}
 
-              <li>
-                <a href="#" style="font-family: 'Raleway', sans-serif; color:black;font-size: 1.2em;">Change Password</a>
-              </li>
-              <!-- <li role="separator" class="divider"></li> -->
+              <li class=""><a href="{% url 'lotOwner:Details' request.user.id %}" style="font-family: 'Raleway', sans-serif;font-size:25px;color:black;font-size: 1.2em;">Edit Lot Details<span class="sr-only">(current)</span></a></li>
+
+              <li class=""><a href="{% url 'lotOwner:Location' %}" style="font-family: 'Raleway', sans-serif;font-size:25px;color:black;font-size: 1.2em;">Add Lot Location<span class="sr-only">(current)</span></a></li>
+              {% else %}
+              <!--  -->
+              {% endif %}
 
             </ul>
-          </li>
-        </ul>
+
+
+
 
 
 

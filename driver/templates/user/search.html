@@ -1,11 +1,9 @@
-{%extends 'user/base.html'%} {% load bootstrap3 %}{% load static%}
-
-<!--  -->
-{% block content %}
+{%extends 'user/base.html'%} {% load bootstrap3 %}{% load static%} {% block content %}
 <br><br><br>
+
 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm-4 col-md-3 sidebar well" style="background:white;">
+    <div class="col-sm-4 col-md-3 sidebar " style="background:white;">
       <br> {% if user %}
       <div class="">
         <!-- Heading -->
@@ -83,9 +81,11 @@
     </div>
     <div class="col-sm-8 col-sm-offset-4 col-md-9 col-md-offset-3 main" style="background-color:#D5DFD5;">
       <br><br>
+
       <div class="container-fluid">
-        <h1 class="page-header">Top Rated </h1>
-        <!-- <h2 class="text-muted">free!</h2> -->
+        <h1 class="page-header">Results </h1> {% if searched_locations %}
+        <h2>Found {{ searched_locations|length }} results  of the searched  location </h2> {% else %}
+        <h2> Found 0 results </h2> {% endif %}
 
       </div>
 
@@ -94,29 +94,88 @@
         <div id="map" class="well"></div>
 
       </div>
-
+      <br><br><br><br><br><br>
     </div>
   </div>
 </div>
+{% endblock %} {% block scripts %}
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+{% bootstrap_javascript %}
 <script>
+  var map;
+  var marker;
+  var infowindow;
+
+
+  var $lat;
+  var $lon;
+
   function initMap() {
-    var Nairobi = {
-      lat: -1.2921,
-      lng: 36.8219
+    //location of Nairobi is stored in a varibale
+    var myLatLng = {
+      lat: -1.28333,
+      lng: 36.81667
     };
-    var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 14,
-      center: Nairobi
+    var mombasa = {
+      lat: -1.3007,
+      lng: 36.7849
+    };
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: myLatLng,
+      zoom: 13
     });
-    var marker = new google.maps.Marker({
-      position: Nairobi,
-      map: map
+
+
+
+
+
+
+    //we assign a click listener  with the addListener that creates a marker when the user clicks the map
+
+    // we create a variable called spots that store the spots that we passed from the view function
+    var spots = JSON.parse('{{spots_json|safe}}');
+    console.log(spots);
+    for (var i = 0; i < spots.length; i++) {
+      console.log('yess its working');
+      //we store the lat and long in the variables
+      var lat = parseFloat(spots[i].fields.latitude)
+      var lng = parseFloat(spots[i].fields.longitude)
+      var name = spots[i].fields.name_of_location
+      //Assign them positions lat being index 0
+      coords = [lat, lng]
+      //we log them to the console to check if the function is working
+      //console.log(name);
+      console.log(name)
+
+      var LatLng = new google.maps.LatLng(coords[0], coords[1]);
+      marker = new google.maps.Marker({
+        position: LatLng,
+        map: map
+      });
+
+    }
+    var contentString = '<div id="content">' + '<h4>Location name</h4>' + name + '<br>' + '<button class = "btn btn-info"><a href = "{% url '
+    driver: edit_profile '%}">book</a></button>' + '</div>';
+    infowindow = new google.maps.InfoWindow({
+      content: contentString
+
     });
+
+    marker.addListener('click', function() {
+      infowindow.open(map, marker);
+    });
+
+
+
   }
 </script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCK_t72XTSivEU3POATANkgjcWilYv5UT4&callback=initMap"></script>
+<!--we load the api from the specified api, the async attribute allows the page to
+    load as the api loads the call back paramater executes the initMap() function that specifies the latitude and longitude of where the map will
+    be centered
+  -->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmrKc7FjQwLm9vEtseo5LK7Z6M_1aPm5k&callback=initMap"></script>
 
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.0/jquery.matchHeight-min.js"></script>
 
-<!--  -->
 {% endblock %}

@@ -1,4 +1,5 @@
 {%extends 'Lot/base.html'%} {% load bootstrap3 %} {% load static %} {% block content %}
+<br><br><br><br><br><br><br>
 <div class="container">
   <form action="{% url 'lotOwner:Lot' %}" method="post" enctype="multipart/form-data">
     {%csrf_token%} {% bootstrap_form form1 %}

@@ -1,10 +1,8 @@
-{%extends 'Lot/base.html'%} {% load bootstrap3 %} {% load static %} {% block styles %} {{block.super}} {% bootstrap_css %}
-<link rel="stylesheet" href="#"> {% endblock %} {% block content %}
+{%extends 'Lot/base.html'%}{% load bootstrap3 %} {% load static %}
+<!--  -->
+{% block content %}
 
-<div class="container">
-  <h1 class="text-center" style="font-family: 'Raleway', sans-serif;">{{title}}</h1>
-</div>
-
+<h3 class="page-header text-center">Set Lot Location</h3>
 <div id="form">
   <form class="navbar-form" role="search" action="{% url 'lotOwner:Map' %}">
 
@@ -18,9 +16,12 @@
   </form>
 
 </div>
-<div id="map">
-  hello</div>
-{% endblock %} {% block scripts %}
+
+<div id="map" class="well"></div>
+
+<br><br><br> {%endblock%}
+<!--  -->
+{% block scripts %}
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 {% bootstrap_javascript %}

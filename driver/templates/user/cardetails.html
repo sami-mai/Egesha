@@ -1,14 +1,22 @@
 {%extends 'user/base.html'%} {% load bootstrap3 %} {% load static %} {% block content %} {{form.media}}
-<div class="container" style="padding-top: 10%">
-  <h1>
-        <strong>Car details</strong>
-    </h1> {{form.media}}
+<div class="container-fluid" style="padding-top: 9.5%; background-color:#D5DFD5;">
+  <div class="row" style="">
+    <h1 class="text-center"><strong>Car details</strong></h1>
+    <div class="col-md-3"></div>
+    <div class="col-md-6 well">
+      <!--  -->
+      {{form.media}}
+      <form action="{%url 'driver:car_details' %}" method="post" enctype="multipart/form-data">
+        {%csrf_token%} {% bootstrap_form cardetails_form%}
+        <input type="submit" class="btn btn-success btn-lg" value="Post">
+      </form>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
 
-  <form action="{%url 'driver:car_details' %}" method="post" enctype="multipart/form-data">
-    {%csrf_token%} {% bootstrap_form cardetails_form%}
-    <input type="submit" class="btn btn-success btn-lg" value="Post">
-  </form>
-
-
+  <br><br><br><br><br><br><br><br><br><br>
 </div>
-<br><br><br><br><br><br><br><br><br>{%endblock%}
+
+
+<!--  -->
+{%endblock%}

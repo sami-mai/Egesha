@@ -18,9 +18,13 @@ def home(request):
     current_profile=''
 
     current_user_name=OwnerProfile.objects.filter(id=request.user.id)
+    current_profile=OwnerProfile.objects.filter(user=current_user)
     if current_user_name.exists():
-        current_profile=OwnerProfile.objects.get(id=current_user)
+        current_profile=OwnerProfile.objects.filter(user=current_user)
         lots=LotDetails.objects.filter(owner=current_profile)
+
+    else:
+        print('no profile')
 
     if request.method == 'POST':
         form1=OwnerProfileForm(request.POST, request.FILES)
@@ -33,14 +37,15 @@ def home(request):
         form1=OwnerProfileForm()
 
 
-
     return render (request,'Lot/home.html',{"lots":lots,"current_profile":current_profile,"form1":form1})
+
+
 def Lotdetail(request,profile_id):
     current_profile=''
     current_user=request.user
-    current_user_name=OwnerProfile.objects.filter(id=request.user.id)
-    if current_user_name.exists():
-        current_profile=OwnerProfile.objects.get(id=profile_id)
+    current_profile=OwnerProfile.objects.get(id=profile_id)
+
+
     if request.method == 'POST':
         form = LotDetailsForm(request.POST,request.FILES)
         if form.is_valid():
@@ -54,6 +59,7 @@ def Lotdetail(request,profile_id):
         form=LotDetailsForm()
 
     return render(request,'Lot/details.html',{"form":form,"current_profile":current_profile,"current_user":current_user})
+
 
 def map(request):
 
@@ -84,6 +90,8 @@ def map(request):
     else:
         print('Not working')
     return redirect('/lot/owner/')
+
+
 def location(request):
     current_user=request.user.id
 
