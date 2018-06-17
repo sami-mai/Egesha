@@ -1,4 +1,6 @@
-{% load bootstrap3 %} {% load static %}
+{%extends 'Lot/base.html'%}{% load bootstrap3 %} {% load static %}
+<!--  -->
+{% block content %}
 
 <h3 class="page-header text-center">Set Lot Location</h3>
 <div id="form">
@@ -17,9 +19,7 @@
 
 <div id="map" class="well"></div>
 
-<br><br><br>
-
-
+<br><br><br> {%endblock%}
 <!--  -->
 {% block scripts %}
 
