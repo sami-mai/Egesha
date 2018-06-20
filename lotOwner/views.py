@@ -54,6 +54,7 @@ def Lotdetail(request,profile_id):
     current_profile=OwnerProfile.objects.get(id=profile_id)
 
 
+
     if request.method == 'POST':
         form = LotDetailsForm(request.POST,request.FILES)
         if form.is_valid():
@@ -104,8 +105,10 @@ def map(request,lot_id):
 def location(request,lot_id):
     current_user=request.user.id
     lot=LotDetails.objects.get(id=lot_id)
+
     spots=''
     current_user_name=OwnerProfile.objects.filter(id=request.user.id)
+
     if current_user_name.exists():
         current_profile=OwnerProfile.objects.get(id=current_user)
         lots=LotDetails.objects.all()
@@ -128,3 +131,16 @@ def edit_profile(request,profile_id):
     else:
         form=OwnerProfileForm()
     return render (request,'Lot/edit_profile.html',{"form":form,"current_profile":current_profile})
+def edit_lot(request,lot_id):
+    lot=LotDetails.objects.get(id=lot_id)
+    if request.method == 'POST':
+        form = LotDetailsForm(request.POST,request.FILES,instance=lot)
+        if form.is_valid():
+            details = form.save(commit=False)
+            details.save()
+
+            return redirect('/lot/owner/')
+
+    else:
+        form=LotDetailsForm()
+    return render (request,'Lot/edit_lot.html',{"form":form,"lot":lot})

@@ -143,7 +143,7 @@
           <p style="font-family: 'Raleway', sans-serif">Total spaces: {{lot.Total_number_of_spaces}}</p>
 
           <p style="font-family: 'Raleway', sans-serif">Located at: {{lot.locations|default:"--" }}</p>
-
+          <button type="button" class="btn btn-info"><a href="{% url 'lotOwner:Edit_Lot' lot.id %}" style="color:white;">Edit Lot details</a></button>  
 
           <!-- </div> -->
           {% empty %}
@@ -229,7 +229,7 @@
 
     //we assign a click listener  with the addListener that creates a marker when the user clicks the map
 
-      
+
 
 
 
