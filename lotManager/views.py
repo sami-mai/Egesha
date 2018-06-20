@@ -6,9 +6,14 @@ from driver.models import Cardetails
 from .models import Parked
 from .forms import Parkedcars
 
-def dashboard(request):
+def operator(request):
     cardetails = Cardetails.objects.all()
 
+  
+
+    return render(request,'lotManager/index.html',{"cardetails":cardetails})
+
+def checkin(request):
     if request.method == 'POST':
         form = Parkedcars(request.POST,request.FILES)
         if form.is_valid():
@@ -17,4 +22,9 @@ def dashboard(request):
     else:
         form = Parkedcars()
 
-    return render(request,'lotManager/index.html',{"cardetails":cardetails,"form":form})
+    return render(request,'lotManager/in.html',{"form":form})
+
+def checkout(request):
+   
+
+    return render(request,'lotManager/out.html')

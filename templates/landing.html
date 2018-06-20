@@ -105,7 +105,7 @@
           for parking.
         </p>
         {%if user.is_authenticated%}
-        <a href="{%url 'lotManager:dashboard'%}" class="btn btn-primary">Lot Operation</a>
+        <a href="{%url 'lotManager:operator'%}" class="btn btn-primary">Lot Operation</a>
         <!--  -->
         {%else%}
         <a href="{%url 'login'%}" class="btn btn-primary">Lot Operation</a>

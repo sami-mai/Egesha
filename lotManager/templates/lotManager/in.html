@@ -1,0 +1,79 @@
+{%extends 'lotManager/base.html'%}{% load bootstrap3 %}{% load static%}
+<!--  -->
+{% block content %}
+
+<style>
+.checks{
+  padding-top: 10%;
+}
+</style>
+
+
+
+<br><br><br><br><br><br><br>
+
+
+<ul class="nav nav-tabs" id="pills-tab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Bookings</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Check-In</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Check-Out</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+     <div class="container">
+       {% for cardetail in cardetails %}
+        <div class="row">
+            <div class="col-md-4">Driver Name: {{user.username }} </div>
+            <div class="col-md-4">Car Make : {{cardetail.car_make}}</div>
+            <div class="col-md-4">Car Plate : {{cardetail.car_plate}}</div>
+          </div>
+        {% endfor %}
+     </div>
+     
+    </div>
+    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+      
+        <div class="container checks">
+            <form class="form-inline">
+                <div class="form-group">
+                  <label class="sr-only" for="exampleInputEmail3">Car Plate</label>
+                  <input class="form-control" placeholder="Car Plate">
+                </div>
+                
+                
+                <button type="submit" class="btn btn-default">Check-In</button>
+              </form>
+         </div>
+
+    </div>
+    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+
+        <div class="container checks">
+       
+
+              <form  action="" method="post" enctype="multipart/form-data" class="form-inline">
+                {%csrf_token%}
+            
+                {% bootstrap_form form%}
+                <input type="submit" class="btn btn-success btn-lg btns" value="Check-In">
+              </form>
+    
+
+         </div>
+
+    </div>
+  </div>
+
+
+
+ <!-- bootstrap cdn js link -->
+ <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+{%endblock%}
