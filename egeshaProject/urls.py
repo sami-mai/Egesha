@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'^operator/', include('lotManager.urls')),
     url(r'^user/', include('accounts.urls')),
     url(r'^driver/', include('driver.urls')),
+    # url(r'^egeshapay/', include('egeshapay.urls')),
 ]
 
 if settings.DEBUG:

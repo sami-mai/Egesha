@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'driver',
     'lotManager',
     'lotOwner',
+    'egeshapay',
     'bootstrap3',
     'social_django',
 
@@ -93,9 +94,9 @@ WSGI_APPLICATION = 'egeshaProject.wsgi.application'
 DATABASES = {
    'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'lot',
-            'USER': 'maryanne',
-            'PASSWORD': '1234@5',
+            'NAME': 'egesha',
+            'USER': 'sami_mai',
+            'PASSWORD': 'SmaiDB',
          }
 }
 

@@ -101,10 +101,8 @@
         <h2 class="text-center mb-4">
                           {{ user.username|title }}
                       </h2>
-      </div>{% endif %}
-
+      </div>{% endif %} {%if current_profile%} {% for current in current_profile %}
       <div class="well">
-        {% for current in current_profile %}
         <div class="container">
           <h1 class="text-center" style="font-family: 'Raleway', sans-serif;">Lot Owner</h1>
         </div>
@@ -114,23 +112,9 @@
           <h4 style="font-family: 'Raleway', sans-serif">Phone : {{current.phone_number}}</h4>
           <h4 style="font-family: 'Raleway', sans-serif">National ID: {{current.national_id}}</h4>
         </div>
-
-        {% empty %}
-        <div class="container">
-
-          <h1 class="text-center" style="font-family: 'Raleway', sans-serif;">Create Profile</h1>
-        </div>
-        <div class="container">
-          <form action="{% url 'lotOwner:Lot' %}" method="post" enctype="multipart/form-data">
-            {%csrf_token%} {% bootstrap_form form1 %}
-
-            <input type="submit" class="btn btn-warning btn-lg" value="Create profile">
-          </form>
-
-        </div>
-
-        {% endfor %}
       </div>
+      {% endfor %} {%endif%}
+
       <div class="well">
         <div class="container">
           {% for lot in lots %}
@@ -142,18 +126,24 @@
           <h2 style="font-family: 'Raleway', sans-serif">Lot Name: {{lot.Name_of_lot}}</h2>
           <p style="font-family: 'Raleway', sans-serif">Total spaces: {{lot.Total_number_of_spaces}}</p>
 
-          <p style="font-family: 'Raleway', sans-serif">Located at: {{lot.locations|default:"--" }}</p>
+          <!-- <p style="font-family: 'Raleway', sans-serif">Located at: {{lot.locations|default:"-" }}</p> -->
 
 
           <!-- </div> -->
           {% empty %}
-          <ul>
-            <li>
-              <h3 style="font-family: 'Raleway', sans-serif">No Lot information Available</h3>
-            </li>
-            <li>
-              <h3 style="font-family: 'Raleway', sans-serif">To add Information click on the <b>Add Lot details</b> on the navbar</h3>
-          </ul>
+
+          <h3 style="font-family: 'Raleway', sans-serif">No Lot information Available</h3>
+          <!--  -->
+          {%if current_profile%}
+          <a href="{% url 'lotOwner:Details' request.user.id %}" style="font-family: 'Raleway', sans-serif">
+            <h3>Add Lot details</h3></a>
+          <!--  -->
+          {%else%}
+
+          <!-- <h3 style="font-family: 'Raleway', sans-serif">Create Profile</h3> -->
+          <!--  -->
+          {%endif%}
+          <!--  -->
           {% endfor %}
 
         </div>
@@ -161,7 +151,7 @@
     </div>
   </div>
   <div class="col-sm-7 col-sm-offset-5 col-md-8 col-md-offset-4 main" style="background-color:#D5DFD5;">
-    <br><br>
+    <br><br> {%if current_profile%}
     <div class="container-fluid">
       <h1 class="page-header"> Lot Map </h1>
       <!-- <h2 class="text-muted">free!</h2> -->
@@ -173,18 +163,31 @@
       <div id="map_1" class="well"></div>
 
     </div>
+    {% else %}
+    <div class="container-fluid">
+      <h1 class="page-header" style="font-family: 'Raleway', sans-serif;">Create Profile</h1>
+    </div>
+    <br><br>
+    <div class="container well" style="width:650px">
+      <form action="{% url 'lotOwner:Lot' %}" method="post" enctype="multipart/form-data">
+        {%csrf_token%} {% bootstrap_form form1 %}
 
+        <input type="submit" class="btn btn-warning btn-lg" value="Create profile">
+      </form>
+
+    </div>
+    {%endif%}
+    <br><br><br>
   </div>
-</div>
-</div>
-<br><br><br><br>
-<!--  -->
+
+
+  <!--  -->
 
 
 
 
 
-<hr>
+  <hr>
 
 
 </div>
@@ -229,7 +232,7 @@
 
     //we assign a click listener  with the addListener that creates a marker when the user clicks the map
 
-      
+
 
 
 

@@ -76,7 +76,27 @@
 <!--  -->
 {%endif%}
 <!--  -->
+{% if request.user.driver_profile %}
+<div class="pay">
+  <br>
+  <form class="" action="index.html" method="post">
+    <button type="submit" class="btn btn-lg btn-default btn-block text-center text-sm">
+    <a href="https://rave.flutterwave.com/pay/payegesha" target="_blank">PAY NOW</a>
 
+    </button>
+  </form>
+
+
+
+  <!--  -->
+  {%else%}
+  <button type="submit" class="btn btn-lg btn-default btn-block text-center text-sm">
+          <a href="{% url 'driver:edit_profile'%}" >BOOK NOW</a>
+          <!-- <a href="https://rave.flutterwave.com/pay/egeshaqhk5" target="_blank">BOOK NOW</a> -->
+
+
+  <!--  -->
+  {%endif%}
 </div>
 </div>
 <div class="col-sm-8 col-sm-offset-4 col-md-9 col-md-offset-3 main" style="background-color:#D5DFD5;">

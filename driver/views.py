@@ -12,6 +12,19 @@ from django.core.serializers.json import DjangoJSONEncoder
 # Create your views here.
 import africastalking
 
+def homed(request):
+    '''
+    function to display driver and car details
+    '''
+    title="Egesha | Home "
+    try:
+        cardetails = Cardetails.objects.filter(id = request.user.id)
+        profile = DriverProfile.objects.filter(id =request.user.id)
+        user = request.user
+    except ValueError:
+        Http404
+
+    return render(request,'user/indexed.html',{"cardetails":cardetails,"profile":profile,"user":user})
 
 def car_details(request):
     '''
@@ -19,7 +32,9 @@ def car_details(request):
     '''
     title="Egesha | Car Details "
     current_user = request.user
+    profile = DriverProfile.objects.filter(id =request.user.id)
     try:
+
         if request.method == 'POST':
             cardetails_form = CardetailsForm(request.POST, request.FILES)
 
@@ -30,15 +45,19 @@ def car_details(request):
 
                 cardetails.save()
 
-                return redirect('/driver/')
+                return redirect('/driver/home/')
 
         else:
             cardetails_form = CardetailsForm
 
     except ValueError:
         Http404
-
-    return render(request, 'user/cardetails.html', {"title":title,"cardetails_form": cardetails_form})
+    context = {
+        "title": title,
+        "cardetails_form": cardetails_form,
+        "profile": profile
+        }
+    return render(request, 'user/cardetails.html', context)
 
 
 def edit_profile(request):
@@ -85,7 +104,6 @@ def home(request):
     except ValueError:
         Http404
 
-
     return render(request,'user/index.html',{"cardetails":cardetails,"profile":profile,"user":user})
 
 
@@ -109,7 +127,8 @@ def search_location(request):
 
     return render (request,'user/search.html',{"coords_json":coords_json,"spots_json":spots_json,"searched_locations":searched_locations})
 
-def status(request):
-    
+def status_success(request):
+    return render (request,'user/status_success.html')
 
-    return render (request,'user/status.html')
+def status_failed(request):
+    return render (request,'user/status_failed.html')

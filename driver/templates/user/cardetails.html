@@ -1,20 +1,92 @@
-{%extends 'user/base.html'%} {% load bootstrap3 %} {% load static %} {% block content %} {{form.media}}
-<div class="container-fluid" style="padding-top: 9.5%; background-color:#D5DFD5;">
-  <div class="row" style="">
-    <h1 class="text-center"><strong>Car details</strong></h1>
-    <div class="col-md-3"></div>
-    <div class="col-md-6 well">
-      <!--  -->
-      {{form.media}}
-      <form action="{%url 'driver:car_details' %}" method="post" enctype="multipart/form-data">
-        {%csrf_token%} {% bootstrap_form cardetails_form%}
-        <input type="submit" class="btn btn-success btn-lg" value="Post">
-      </form>
+{%extends 'user/base.html'%} {% load bootstrap3 %} {% load static %}
+<!--  -->
+{% block content %} {{form.media}}
+<br><br><br>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-4 col-md-3 sidebar well" style="background:white;">
+      <br> {% if user %}
+      <div class="">
+        <!-- Heading -->
+        <h2 class="text-center mb-4">
+                  {{ user.username|title }}
+              </h2>
+      </div>{% endif %}
+      <br>
+
+
+      <!-- <div class="well" style="background-color:#D5DFD5;">
+
+      </div> -->
+      {% if profile %}
+      <div class="well" style="background-color:#D5DFD5;">
+        <div class="container">
+          <div class="row justify-content-center align-items-center">
+
+            <div class="col-md-6 col-lg-7" style="padding-top: 15%;">
+
+              <!-- Preheading -->
+              <img src=" {{ profile.avatar.url }}" alt="avatar">
+
+              <!-- Heading -->
+              <p class="text-center mb-4" data-animation="fadeUp" data-animation-order="1" data-animation-trigger="entered">
+                {{ profile.bio}}
+              </p>
+              <p class="text-center mb-4" data-animation="fadeUp" data-animation-order="1" data-animation-trigger="entered">
+                {{ profile.license}}
+              </p>
+              <p class="text-center mb-4" data-animation="fadeUp" data-animation-order="1" data-animation-trigger="entered">
+                {{ profile.phone_number}}
+              </p>
+
+            </div>
+            <!--  -->
+            {% endif %}
+
+            <br> {% if cardetails %}{% for cardetails in cardetails %}
+            <div class="col-md-6 col-lg-7" style="padding-top: 15%;">
+
+              <!-- Preheading -->
+              <h1 class="text-black text-muted text-uppercase text-center text-sm" data-animation="fadeUp" data-animation-order="0" data-animation-trigger="entered">
+                        {{ cardetails.car_make }}
+                    </h1>
+
+              <!-- Heading -->
+              <h3 class="text-center mb-4" data-animation="fadeUp" data-animation-order="1" data-animation-trigger="entered">
+                        {{ cardetails.car_plate }}
+                    </h3>
+
+
+            </div>
+            <!-- / .row -->
+          </div>
+        </div>
+      </div>
+      {% endfor %}{% endif %}
     </div>
-    <div class="col-md-3"></div>
+
+    <div class="col-sm-8 col-sm-offset-4 col-md-9 col-md-offset-3 main" style="background-color:#D5DFD5;">
+      <br><br>
+      <div class="container-fluid">
+        <h1 class="page-header">Car details</h1>
+        <br><br>
+        <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-6 well">
+            <!--  -->
+            {{form.media}}
+            <form action="{%url 'driver:car_details' %}" method="post" enctype="multipart/form-data">
+              {%csrf_token%} {% bootstrap_form cardetails_form%}
+              <input type="submit" class="btn btn-success btn-lg" value="Post">
+            </form>
+          </div>
+          <div class="col-md-3"></div>
+        </div>
+      </div>
+      <br><br><br><br><br><br><br><br><br><br>
+    </div>
   </div>
 
-  <br><br><br><br><br><br><br><br><br><br>
 </div>
 
 
