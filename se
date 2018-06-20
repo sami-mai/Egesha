@@ -1,0 +1,30 @@
+                  List of relations
+ Schema |            Name            | Type  | Owner 
+--------+----------------------------+-------+-------
+ public | accounts_driverprofile     | table | nish
+ public | accounts_managerprofile    | table | nish
+ public | accounts_ownerprofile      | table | nish
+ public | auth_group                 | table | nish
+ public | auth_group_permissions     | table | nish
+ public | auth_permission            | table | nish
+ public | auth_user                  | table | nish
+ public | auth_user_groups           | table | nish
+ public | auth_user_user_permissions | table | nish
+ public | django_admin_log           | table | nish
+ public | django_content_type        | table | nish
+ public | django_migrations          | table | nish
+ public | django_session             | table | nish
+ public | driver_booking             | table | nish
+ public | driver_cardetails          | table | nish
+ public | lotManager_guard           | table | nish
+ public | lotOwner_location          | table | nish
+ public | lotOwner_lotdetails        | table | nish
+ public | paypal_ipn                 | table | nish
+ public | paypal_nvp                 | table | nish
+ public | social_auth_association    | table | nish
+ public | social_auth_code           | table | nish
+ public | social_auth_nonce          | table | nish
+ public | social_auth_partial        | table | nish
+ public | social_auth_usersocialauth | table | nish
+(25 rows)
+

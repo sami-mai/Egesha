@@ -1,13 +1,16 @@
 from django.db import models
 from django.contrib.auth.models import User
-#import security profile
-#import lot details
+from accounts.models import ManagerProfile
+from accounts.models import DriverProfile
 
 
 # Create your models here.
 
-# class Guard(models.Model):
-#     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
-#     lot = models.ForeignKey(Lot,on_delete=models.CASCADE)
 
-    #method to edit stuff..lot details
+class Parked(models.Model):
+    '''
+    class for populating details of the car
+    '''
+    car_plate = models.CharField(max_length = 30,default = 'KCA101Z',null = True)
+    car_make = models.CharField(max_length = 30, default ='RangeRover', null = True)
+    driver = models.ForeignKey(DriverProfile, null = True,on_delete=models.CASCADE)
