@@ -44,7 +44,9 @@
 
               <li class="text-center text-muted" style="font-family: 'Montserrat', sans-serif; color:black;font-size: 1.2em;"><strong>@ {{user.username}}</strong></li>
               <li role="separator" class="divider"></li>
-              <li><a href="#" style="font-family: 'Raleway', sans-serif; color:black;font-size: 1.2em;">Edit Profile</a></li>
+
+              <li><a href="{% url 'lotOwner:Edit' request.user.id %}" style="font-family: 'Raleway', sans-serif; color:black;font-size: 1.2em;">Edit Profile</a></li>
+
               {% if current_profile %}
 
               <li class=""><a href="{% url 'lotOwner:Details' request.user.id %}" style="font-family: 'Raleway', sans-serif;font-size:25px;color:black;font-size: 1.2em;">Edit Lot Details<span class="sr-only">(current)</span></a></li>

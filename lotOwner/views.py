@@ -29,7 +29,7 @@ def home(request):
         print('no profile')
 
     if request.method == 'POST':
-        form1=OwnerProfileForm(request.POST, request.FILES)
+        form1=OwnerProfileForm(request.POST, request.FILES,instance=current_profile)
         if form1.is_valid():
             user_profile=form1.save(commit=False)
             user_profile.user=request.user
@@ -116,3 +116,15 @@ def location(request,lot_id):
     coords_json=json.dumps(coords,cls=DjangoJSONEncoder)
     spots_json=serializers.serialize('json',spots,cls=DjangoJSONEncoder)
     return render (request,'Lot/location.html',{"coords_json":coords_json,"spots_json":spots_json,"lot":lot})
+def edit_profile(request,profile_id):
+    current_profile=OwnerProfile.objects.get(id=profile_id)
+    if request.method == 'POST':
+        form=OwnerProfileForm(request.POST, request.FILES,instance=current_profile)
+        if form.is_valid():
+            user_profile=form.save(commit=False)
+            user_profile.user=request.user
+            user_profile.save( )
+            return redirect('/lot/owner/')
+    else:
+        form=OwnerProfileForm()
+    return render (request,'Lot/edit_profile.html',{"form":form,"current_profile":current_profile})

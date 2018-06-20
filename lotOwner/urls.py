@@ -9,7 +9,8 @@ urlpatterns=[
     url(r'^owner/',views.home, name='Lot'),
     url(r'^details/(\d+)',views.Lotdetail,name='Details'),
     url(r'^map/(\d+)',views.map,name='Map'),
-    url(r'^location/(\d+)',views.location,name='Location')
+    url(r'^location/(\d+)',views.location,name='Location'),
+    url(r'^edit/(\d+)',views.edit_profile,name='Edit'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
