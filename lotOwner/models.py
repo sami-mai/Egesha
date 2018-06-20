@@ -30,3 +30,7 @@ class Location(models.Model):
     def search (cls,search_term):
         locations=cls.objects.filter(name_of_location__icontains=search_term)
         return locations
+class PaymentDetails(models.Model):
+    Bank_name=models.CharField(max_length=40)
+    Account_number=models.CharField(max_length=40)
+    owner=models.ForeignKey(OwnerProfile,null=True)
