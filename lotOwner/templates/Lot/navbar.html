@@ -50,6 +50,7 @@
               {% if current_profile %}
 
               <li class=""><a href="{% url 'lotOwner:Details' request.user.id %}" style="font-family: 'Raleway', sans-serif;font-size:25px;color:black;font-size: 1.2em;">Edit Lot Details<span class="sr-only">(current)</span></a></li>
+              <li class=""><a href="{%url 'lotOwner:Payment' request.user.id %}" style="font-family: 'Raleway', sans-serif;font-size:25px;color:black;font-size: 1.2em;">Edit Payment details <span class="sr-only">(current)</span></a></li>
 
               {% else %}
               <!--  -->

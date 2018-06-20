@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from accounts.models import OwnerProfile
 from .models import LotDetails,Location
-from .forms import LotDetailsForm,OwnerProfileForm
+from .forms import LotDetailsForm,OwnerProfileForm,PaymentForm
 from django.contrib.auth.models import User
 import googlemaps
 #we import the serializers to convert the data from python to json
@@ -144,3 +144,15 @@ def edit_lot(request,lot_id):
     else:
         form=LotDetailsForm()
     return render (request,'Lot/edit_lot.html',{"form":form,"lot":lot})
+def payment(request,profile_id):
+    current_profile=OwnerProfile.objects.get(id=profile_id)
+    if request.method == 'POST':
+        form=PaymentForm(request.POST, request.FILES)
+        if form.is_valid():
+            user_profile=form.save(commit=False)
+            user_profile.owner=current_profile
+            user_profile.save()
+            return redirect('/lot/owner/')
+    else:
+        form=PaymentForm()
+    return render(request,'Lot/payment.html',{"form":form,"current_profile":current_profile})

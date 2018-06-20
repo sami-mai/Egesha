@@ -11,7 +11,8 @@ urlpatterns=[
     url(r'^map/(\d+)',views.map,name='Map'),
     url(r'^location/(\d+)',views.location,name='Location'),
     url(r'^edit/(\d+)',views.edit_profile,name='Edit'),
-    url(r'^edit_lot/(\d+)',views.edit_lot,name='Edit_Lot')
+    url(r'^edit_lot/(\d+)',views.edit_lot,name='Edit_Lot'),
+    url(r'^payment/(\d+)',views.payment,name="Payment"),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
