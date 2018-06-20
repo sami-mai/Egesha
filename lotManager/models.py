@@ -12,5 +12,4 @@ class Parked(models.Model):
     class for populating details of the car
     '''
     car_plate = models.CharField(max_length = 30,default = 'KCA101Z',null = True)
-    car_make = models.CharField(max_length = 30, default ='RangeRover', null = True)
-    driver = models.ForeignKey(DriverProfile, null = True,on_delete=models.CASCADE)
+    
