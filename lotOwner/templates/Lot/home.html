@@ -1,55 +1,193 @@
 {%extends 'Lot/base.html'%} {% load bootstrap3 %} {% load static %}
 <!--  -->
 {% block content %}
-<br><br><br><br> {% for current in current_profile %}
-<div class="container">
-  <h1 class="text-center" style="font-family: 'Raleway', sans-serif;">Lot Owner</h1>
-</div>
-<div class="container">
-  <img src="{{current.avatar.url}}" class="img-responsive" style="height:35%;width:45%;" alt="Image">
-  <h2 style="font-family: 'Raleway', sans-serif">Name: {{current.user.username}}</h2>
-  <h2 style="font-family: 'Raleway', sans-serif">Phone_Number: {{current.phone_number}}</h2>
-  <h2 style="font-family: 'Raleway', sans-serif">National_id: {{current.national_id}}</h2>
-</div>
+<!-- <nav class="main-menu">
+            <ul>
+                <li>
+                    <a href="http://justinfarrow.com">
+                        <i class="fa fa-home fa-2x"></i>
+                        <span class="nav-text">
+                            Dashboard
+                        </span>
+                    </a>
 
-{% empty %}
-<div class="container">
+                </li>
+                <li class="has-subnav">
+                    <a href="#">
+                        <i class="fa fa-laptop fa-2x"></i>
+                        <span class="nav-text">
+                            Stars Components
+                        </span>
+                    </a>
 
-  <h1 class="text-center" style="font-family: 'Raleway', sans-serif;">Create Profile</h1>
-</div>
-<div class="container">
-  <form action="{% url 'lotOwner:Lot' %}" method="post" enctype="multipart/form-data">
-    {%csrf_token%} {% bootstrap_form form1 %}
+                </li>
+                <li class="has-subnav">
+                    <a href="#">
+                       <i class="fa fa-list fa-2x"></i>
+                        <span class="nav-text">
 
-    <input type="submit" class="btn btn-warning btn-lg" value="Create profile">
-  </form>
+                        </span>
+                    </a>
 
-</div>
+                </li>
+                <li class="has-subnav">
+                    <a href="#">
+                       <i class="fa fa-home fa-2x"></i>
+                        <span class="nav-text">
+                           Lot Owner
+                        </span>
+                    </a>
 
-{% endfor %}
-<hr>
+                </li>
+                <hr>
+                {% for current in current_profile %}
+                <li>
+                    <a href="#">
+                        <i class="fa fa-user fa-2x"></i>
+                        <span class="nav-text">
+                            <img src="{{current.avatar.url}}" class="img-circle" style="height:100px;width:100px;" alt="Image">
+                        </span>
+                    </a>
+                </li>
+                {% endfor %}
+                <li>
+                  <hr>
+                    <a href="#">
+                        <i class="fa fa-edit fa-2x"></i>
+                        <span class="nav-text">
+                           Edit profile
+                        </span>
+                    </a>
+                </li>
+                <li>
+                  <hr>
+                   <a href="#">
+                       <i class="fa fa-plus fa-2x"></i>
+                        <span class="nav-text">
+                            Add lot details
+                        </span>
+                    </a>
+                </li>
+                <li>
+                  <hr>
+                   <a href="#">
+                        <i class="fa fa-map-marker fa-2x"></i>
+                        <span class="nav-text">
+                            Maps
+                        </span>
+                    </a>
+                </li>
+              <hr>
+            </ul>
+
+            <ul class="logout">
+                <li>
+                   <a href="#">
+                         <i class="fa fa-power-off fa-2x"></i>
+                        <span class="nav-text">
+                            Logout
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </nav> -->
+<br><br><br>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-5 col-md-4 sidebar well" style="background:white;">
+      {% if user %}
+      <div class="">
+        <!-- Heading -->
+        <h2 class="text-center mb-4">
+                          {{ user.username|title }}
+                      </h2>
+      </div>{% endif %} {%if current_profile%} {% for current in current_profile %}
+      <div class="well">
+        <div class="container">
+          <h1 class="text-center" style="font-family: 'Raleway', sans-serif;">Lot Owner</h1>
+        </div>
+        <div class="container">
+          <img src="{{current.avatar.url}}" class="img-responsive img-fluid img-rounded" style="height:250px;width:320px;" alt="Image">
+          <h4 style="font-family: 'Raleway', sans-serif">Name: {{current.user.username}}</h4>
+          <h4 style="font-family: 'Raleway', sans-serif">Phone : {{current.phone_number}}</h4>
+          <h4 style="font-family: 'Raleway', sans-serif">National ID: {{current.national_id}}</h4>
+        </div>
+      </div>
+      {% endfor %} {%endif%}
+
+      <div class="well">
+        <div class="container">
+          {% for lot in lots %}
+          <!-- <div class="col-md-4 col-sm-6 col-xs-12"> -->
 
 
-<div class="container">
-  {% for lot in lots %}
-  <div class="col-md-4 col-sm-6 col-xs-12">
-    <h2 style="font-family: 'Raleway', sans-serif">Name: {{lot.Name_of_lot}}</h2>
-    <h2 style="font-family: 'Raleway', sans-serif">Total spaces: {{lot.Total_number_of_spaces}}</h2>
-    <img src="{{lot.Image_of_Lot.url}}" class="img-responsive" style="" alt="Image">
+          <a href="{% url 'lotOwner:Location' lot.id %}"><img src="{{lot.Image_of_Lot.url}}" class="img-responsive img-fluid img-rounded" style="height:250px;width:320px;" alt="Image"></a>
+
+          <h2 style="font-family: 'Raleway', sans-serif">Lot Name: {{lot.Name_of_lot}}</h2>
+          <p style="font-family: 'Raleway', sans-serif">Total spaces: {{lot.Total_number_of_spaces}}</p>
+
+          <!-- <p style="font-family: 'Raleway', sans-serif">Located at: {{lot.locations|default:"-" }}</p> -->
+
+
+          <!-- </div> -->
+          {% empty %}
+
+          <h3 style="font-family: 'Raleway', sans-serif">No Lot information Available</h3>
+          <!--  -->
+          {%if current_profile%}
+          <a href="{% url 'lotOwner:Details' request.user.id %}" style="font-family: 'Raleway', sans-serif">
+            <h3>Add Lot details</h3></a>
+          <!--  -->
+          {%else%}
+
+          <!-- <h3 style="font-family: 'Raleway', sans-serif">Create Profile</h3> -->
+          <!--  -->
+          {%endif%}
+          <!--  -->
+          {% endfor %}
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-7 col-sm-offset-5 col-md-8 col-md-offset-4 main" style="background-color:#D5DFD5;">
+    <br><br> {%if current_profile%}
+    <div class="container-fluid">
+      <h1 class="page-header"> Lot Map </h1>
+      <!-- <h2 class="text-muted">free!</h2> -->
+
+    </div>
+    <br>
+    <div class="container-fluid text-center">
+
+      <div id="map_1" class="well"></div>
+
+    </div>
+    {% else %}
+    <div class="container-fluid">
+      <h1 class="page-header" style="font-family: 'Raleway', sans-serif;">Create Profile</h1>
+    </div>
+    <br><br>
+    <div class="container well" style="width:650px">
+      <form action="{% url 'lotOwner:Lot' %}" method="post" enctype="multipart/form-data">
+        {%csrf_token%} {% bootstrap_form form1 %}
+
+        <input type="submit" class="btn btn-warning btn-lg" value="Create profile">
+      </form>
+
+    </div>
+    {%endif%}
+    <br><br><br>
   </div>
 
-  {% empty %}
-  <ul>
-    <li>
-      <h3 style="font-family: 'Raleway', sans-serif">No Lot information Available</h3>
-    </li>
-    <li>
-      <h3 style="font-family: 'Raleway', sans-serif">To add Information click on the <b>Add Lot details</b> on the navbar</h3>
-  </ul>
-  {% endfor %}
 
-</div>
-<hr>
+  <!--  -->
+
+
+
+
+
+  <hr>
 
 
 </div>
@@ -59,19 +197,76 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 {% bootstrap_javascript %}
+<script>
+  // we declare the following as global variables
+  var map;
+  var marker;
+  var infowindow;
+  var messagewindow;
+  var marker1;
+  var $lat;
+  var $lon;
 
-<!--we load the api from the specified api, the async attribute allows the page to
+  function initMap() {
+    //location of Nairobi is stored in a varibale
+    var myLatLng = {
+      lat: -1.28333,
+      lng: 36.81667
+    };
+    var mombasa = {
+      lat: -1.3007,
+      lng: 36.7849
+    };
+    map = new google.maps.Map(document.getElementById('map_1'), {
+      center: myLatLng,
+      zoom: 13
+    });
+    // the marker is positioned at Nairobi
+    //the infowindow retrives the form element when clicking a marker
+    marker1 = new google.maps.Marker({
+      position: myLatLng,
+      map: map,
+    })
+
+
+
+    //we assign a click listener  with the addListener that creates a marker when the user clicks the map
 
 
 
 
+
+    // we create a variable called spots that store the spots that we passed from the view function
+    var spots = JSON.parse('{{spots_json|safe}}');
+    console.log(spots);
+    for (var i = 0; i < spots.length; i++) {
+      console.log('yess its working');
+      //we store the lat and long in the variables
+      var lat = parseFloat(spots[i].fields.latitude)
+      var lng = parseFloat(spots[i].fields.longitude)
+      var name = spots[i].fields.name_of_location
+      //Assign them positions lat being index 0
+      coords = [lat, lng]
+      //we log them to the console to check if the function is working
+      //console.log(coords);
+      console.log(name)
+      var LatLng = new google.maps.LatLng(coords[0], coords[1]);
+      var marker = new google.maps.Marker({
+        position: LatLng,
+        map: map
+      });
+
+    }
+
+
+  }
 </script>
-<!-we load the api from the specified api, the async attribute allows the page to
-
-    load as the api loads the call back paramater executes the initMap() function that specifies the latitude and longitude of where the map will
-    be centered
-  -->
+<!--we load the api from the specified api, the async attribute allows the page to
+  load as the api loads the call back paramater executes the initMap() function that specifies the latitude and longitude of where the map will
+  be centered
+-->
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmrKc7FjQwLm9vEtseo5LK7Z6M_1aPm5k&callback=initMap"></script>
+
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.0/jquery.matchHeight-min.js"></script>
 

@@ -10,6 +10,7 @@ class LotDetails(models.Model):
     Image_of_Lot=models.ImageField(upload_to='images/',null=True)
     Total_number_of_spaces=models.IntegerField()
     owner=models.ForeignKey(OwnerProfile, null=True)
+
     def __str__(self):
         return self.Name_of_lot
 class Location(models.Model):
@@ -22,7 +23,9 @@ class Location(models.Model):
     name_of_location = models.CharField(max_length=40)
     latitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
     longitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
-    owner=models.ForeignKey(OwnerProfile, null=True)
+    lot=models.ForeignKey(LotDetails,null=True,related_name='locations',related_query_name='location')
+    def __str__(self):
+        return self.name_of_location
     @classmethod
     def search (cls,search_term):
         locations=cls.objects.filter(name_of_location__icontains=search_term)
