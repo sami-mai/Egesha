@@ -34,10 +34,10 @@
 
           <a href="{% url 'lotOwner:Location' lot.id %}"><img src="{{lot.Image_of_Lot.url}}" class="img-responsive img-fluid img-rounded" style="height:250px;width:320px;" alt="Image"></a>
 
-          <h2 style="font-family: 'Raleway', sans-serif">Lot Name: {{lot.Name_of_lot}}</h2>
+          <h2 style="font-family: 'Raleway', sans-serif">Lot Name: {{lot.Name_of_lot|title}}</h2>
           <p style="font-family: 'Raleway', sans-serif">Total spaces: {{lot.Total_number_of_spaces}}</p>
 
-          <p style="font-family: 'Raleway', sans-serif">Located at: {{lot.locations|default:"--" }}</p>
+          <p style="font-family: 'Raleway', sans-serif">Located at: {{location.name_of_location}}</p>
           <button type="button" class="btn btn-info"><a href="{% url 'lotOwner:Edit_Lot' lot.id %}" style="color:white;">Edit Lot details</a></button>
 
           <!-- </div> -->
