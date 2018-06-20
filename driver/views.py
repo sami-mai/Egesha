@@ -1,6 +1,6 @@
-from .forms import CardetailsForm
+from .forms import CardetailsForm,TimeinForm,TimeoutForm
 from django.shortcuts import render,redirect,get_object_or_404
-from .models import Cardetails
+from .models import Cardetails,Timein,Timeout
 from django.http import Http404
 from accounts.models import DriverProfile
 from accounts.forms import EditDriver,EditUserForm
@@ -81,12 +81,14 @@ def home(request):
     try:
         cardetails = Cardetails.objects.filter(id = request.user.id)
         profile = DriverProfile.objects.filter(id =request.user.id)
+        timein = Timein.objects.all()
+        timeout = Timeout.objects.all()
         user = request.user
     except ValueError:
         Http404
 
 
-    return render(request,'user/index.html',{"cardetails":cardetails,"profile":profile,"user":user})
+    return render(request,'user/index.html',{"cardetails":cardetails,"profile":profile,"timeout":timeout,"timein":timein,"user":user})
 
 
 def trigger_payment(request):
@@ -108,3 +110,35 @@ def search_location(request):
     searched_locations=Location.search(search_term)
 
     return render (request,'user/search.html',{"coords_json":coords_json,"spots_json":spots_json,"searched_locations":searched_locations})
+
+def time(request):
+    '''
+    function to populate the time into the carlot
+    '''
+    title="Egesha | Time In "
+    current_user = request.user
+    try:
+        if request.method == 'POST':
+            timein_form = TimeinForm(request.POST, request.FILES)
+            timeout_form = TimeoutForm(request.POST, request.FILES)
+            if timein_form.is_valid() and timeout_form.is_valid():
+                timein = timein_form.save(commit=False)
+                timeout = timeout_form.save(commit=False)
+
+                timein.user=current_user
+                timeout.user=current_user
+
+                timein.save()
+                timeout.save()
+
+                return redirect('/driver/')
+
+        else:
+            timein_form  = TimeinForm
+            timeout_form  = TimeoutForm
+
+    except ValueError:
+        Http404
+
+    return render(request, 'user/time.html', {"title":title,"timein_form": timein_form,"timeout_form": timeout_form})
+

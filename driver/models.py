@@ -12,12 +12,16 @@ class Cardetails(models.Model):
     car_make = models.CharField(max_length = 30, default ='RangeRover', null = True)
     driver = models.ForeignKey(DriverProfile, null = True,on_delete=models.CASCADE)
 
-class Booking(models.Model):
+class Timein(models.Model):
     '''
-    class for populating booking details
+    class for populating timein details
     '''
     
-    driver = models.ForeignKey(DriverProfile, null = True,on_delete=models.CASCADE)
-    lotdetails = models.ForeignKey(LotDetails, null = True,on_delete=models.CASCADE)
-    time_in = models.TimeField(auto_now_add=True, blank=True)
-    time_out = models.TimeField(auto_now_add=True, blank=True)
+    time_in = models.TimeField()
+   
+class Timeout(models.Model):
+    '''
+    class for populating timeout details
+    '''
+    
+    time_out = models.TimeField()

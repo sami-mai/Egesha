@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'lotOwner',
     'bootstrap3',
     'social_django',
+    'datetimewidget',
 
 ]
 
@@ -62,6 +63,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'egeshaProject.urls'
@@ -94,8 +96,8 @@ DATABASES = {
    'default': {
             'ENGINE': 'django.db.backends.postgresql',
             'NAME': 'egesha',
-            'USER': 'sami_mai',
-            'PASSWORD': 'SmaiDB',
+            'USER': 'kasabunyu',
+            'PASSWORD': 'kasambuli00',
          }
 }
 

@@ -10,8 +10,8 @@ urlpatterns = [
     url(r'^edit-profile/',views.edit_profile, name = 'edit_profile'),
     url(r'^car-details/',views.car_details, name = 'car_details'),
     url(r'^$',views.home, name ='home'),
-    url(r'^pay/$', views.trigger_payment, name='trigger_payment')
-
+    url(r'^pay/$', views.trigger_payment, name='trigger_payment'),
+    url(r'^edit-time/',views.time, name = 'edit_time'),
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
