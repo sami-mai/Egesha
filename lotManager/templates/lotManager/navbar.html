@@ -25,8 +25,20 @@
 
         <ul class="nav navbar-nav">
           <li class="">
-            <a href="#" style="font-family: 'Raleway', sans-serif;font-size: 1.2em;color:black;">Lot Operations
+            <a href="{% url 'lotManager:operator' %}" style="font-family: 'Raleway', sans-serif;font-size: 1.2em;color:black;">Lot Operations
                             <span class="sr-only">(current)</span>
+                        </a>
+          </li>
+
+          <li class="">
+            <a href="{% url 'lotManager:checkin' %}" style="font-family: 'Raleway', sans-serif;font-size: 1.2em;color:black;">Check-In
+                            
+                        </a>
+          </li>
+
+          <li class="">
+            <a href="{% url 'lotManager:checkout' %}" style="font-family: 'Raleway', sans-serif;font-size: 1.2em;color:black;">Check-Out
+                            
                         </a>
           </li>
 
