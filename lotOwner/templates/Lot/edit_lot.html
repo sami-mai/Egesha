@@ -1,4 +1,4 @@
-{%extends 'Lot/base.html'%}{% load staticfiles%} {% load bootstrap3 %} {% load static %} {% block content %}
+ {%extends 'Lot/base.html'%}{% load staticfiles%} {% load bootstrap3 %} {% load static %} {% block content %}
 <div class="container-fluid" style="padding-top: 8%; background-color:#D5DFD5;">
   <div class="row" style="">
     <h1 class="text-center"><strong>Lot Details</strong></h1>
@@ -6,15 +6,12 @@
     <div class="col-md-6 ">
       <div class="well">
         {{form.media}}
-        <form action="{% url 'lotOwner:Details' current_user.id %}" method="post" enctype="multipart/form-data">
+        <form action="{% url 'lotOwner:Edit_Lot' lot.id %}" method="post" enctype="multipart/form-data">
           {%csrf_token%} {% bootstrap_form form%}
           <input type="submit" class="btn btn-info btn-lg" value="Save">
         </form>
       </div>
-      <div class="well">
-        <!--  -->
-        {%include 'Lot/location.html'%}
-      </div>
+
 
     </div>
     <div class="col-md-3"></div>
