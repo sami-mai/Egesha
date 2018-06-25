@@ -12,6 +12,19 @@ from django.core.serializers.json import DjangoJSONEncoder
 # Create your views here.
 import africastalking
 
+def homed(request):
+    '''
+    function to display driver and car details
+    '''
+    title="Egesha | Home "
+    try:
+        cardetails = Cardetails.objects.filter(id = request.user.id)
+        profile = DriverProfile.objects.filter(id =request.user.id)
+        user = request.user
+    except ValueError:
+        Http404
+
+    return render(request,'user/indexed.html',{"cardetails":cardetails,"profile":profile,"user":user})
 
 def car_details(request):
     '''
@@ -19,7 +32,10 @@ def car_details(request):
     '''
     title="Egesha | Car Details "
     current_user = request.user
+    cardetails = Cardetails.objects.filter(id = request.user.id)
+    profile = DriverProfile.objects.filter(id =request.user.id)
     try:
+
         if request.method == 'POST':
             cardetails_form = CardetailsForm(request.POST, request.FILES)
 
@@ -30,20 +46,25 @@ def car_details(request):
 
                 cardetails.save()
 
-                return redirect('/driver/')
+                return redirect('/driver/home/')
 
         else:
             cardetails_form = CardetailsForm
 
     except ValueError:
         Http404
-
-    return render(request, 'user/cardetails.html', {"title":title,"cardetails_form": cardetails_form})
+    context = {
+        "title": title,
+        "cardetails_form": cardetails_form,
+        "profile": profile,
+        "cardetails": cardetails
+        }
+    return render(request, 'user/cardetails.html', context)
 
 
 def edit_profile(request):
     '''
-    function to populate the details of the car
+    function to populate the details of the profile
     '''
     title="Egesha | Profile Form "
     current_user = request.user
@@ -65,13 +86,38 @@ def edit_profile(request):
                 return redirect('/driver/car-details')
 
         else:
-            driver_form  = EditDriver
-            user_form = EditUserForm
+            driver_form  = EditDriver()
+            user_form = EditUserForm()
 
     except ValueError:
         Http404
 
     return render(request, 'user/profileform.html', {"title":title,"driver_form":driver_form,"user_form":user_form})
+
+def update_profile(request,id):
+    '''
+    function to update profile
+    '''
+    title="Egesha | edit-profile "
+    current_user = DriverProfile.objects.get(id = id)
+    try:
+        if request.method == 'POST':
+
+            driver_form  = EditDriver(request.POST,request.FILES, instance = current_user)
+           
+            if driver_form.is_valid():
+                driverdetails = driver_form.save(commit=False)
+                driverdetails.user=current_user
+                driverdetails.save()
+               
+                return redirect('/driver')
+
+        else:
+            driver_form  = EditDriver()
+    except ValueError:
+        Http404
+
+    return render(request, 'user/editprofile.html', {"title":title,"driver_form":driver_form,"id":id,"current_user":current_user})
 
 def home(request):
     '''
@@ -94,8 +140,8 @@ def home(request):
 def trigger_payment(request):
     africastalking.initialize(username='sandbox', api_key='4caafe95008a0a8ba2df43746a62238715dd1f3f3517be3a898402d40542c034')
     payment = africastalking.Payment
-    res = payment.mobile_checkout(product_name='egesha',phone_number='+254705806372', currency_code='KES', amount=3564)
-    return redirect('/driver/')
+    res = payment.mobile_checkout(product_name='egesha',phone_number='+254720676920', currency_code='KES', amount=4000)
+    return redirect('/driver/status/')
 
 def search_location(request):
     search_term=request.GET.get("location")
@@ -142,3 +188,8 @@ def time(request):
 
     return render(request, 'user/time.html', {"title":title,"timein_form": timein_form,"timeout_form": timeout_form})
 
+def status_success(request):
+    return render (request,'user/status_success.html')
+
+def status_failed(request):
+    return render (request,'user/status_failed.html')

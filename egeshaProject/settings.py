@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'driver',
     'lotManager',
     'lotOwner',
+    'egeshapay',
     'bootstrap3',
     'social_django',
     'datetimewidget',
