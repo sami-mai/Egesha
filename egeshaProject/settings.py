@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'egeshapay',
     'bootstrap3',
     'social_django',
+    'datetimewidget',
 
 ]
 
@@ -63,6 +64,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'egeshaProject.urls'

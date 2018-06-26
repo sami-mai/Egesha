@@ -8,6 +8,7 @@ app_name = 'driver'
 urlpatterns = [
     url(r'^search/', views.search_location, name='Search'),
     url(r'^edit-profile/', views.edit_profile, name='edit_profile'),
+    url(r'^profile/(\d+)', views.update_profile, name='profile'),
     url(r'^car-details/', views.car_details, name='car_details'),
     url(r'^$', views.home, name='home'),
     url(r'^home/$', views.homed, name='homed'),

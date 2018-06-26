@@ -6,6 +6,7 @@ defusedxml==0.5.0
 dj-database-url==0.5.0
 Django==1.11
 django-bootstrap3==10.0.1
+django-datetime-widget==0.9.3
 django-registration==2.4.1
 django-social-auth==0.7.28
 googlemaps==2.5.1
@@ -15,6 +16,7 @@ idna==2.6
 oauth2==1.9.0.post1
 oauthlib==2.1.0
 Pillow==5.1.0
+pkg-resources==0.0.0
 psycopg2-binary==2.7.4
 PyJWT==1.6.4
 python-decouple==3.1
@@ -24,6 +26,7 @@ python3-openid==3.1.0
 pytz==2018.4
 requests==2.18.4
 requests-oauthlib==1.0.0
+schema==0.6.7
 selenium==3.12.0
 six==1.11.0
 social-auth-app-django==2.1.0
