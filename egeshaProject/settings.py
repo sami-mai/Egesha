@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'egeshapay',
     'bootstrap3',
     'social_django',
-    'datetimewidget',
+    # 'datetimewidget',
 
 ]
 
