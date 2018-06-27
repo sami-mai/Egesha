@@ -25,7 +25,16 @@
 
       </div>
 
-
+      <div class="container">
+        {% for carparked in carsparked %}
+         <div class="row">
+             
+             <div class="col-md-4">{{carparked.car_plate}}</div>
+             
+           </div>
+         {% endfor %}
+      </div>
+      
 
 
 

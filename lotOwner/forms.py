@@ -1,5 +1,5 @@
 from django import forms
-from .models import LotDetails, Location
+from .models import LotDetails, Location,PaymentDetails
 from accounts.models import OwnerProfile
 
 
@@ -19,3 +19,10 @@ class LotDetailsForm(forms.ModelForm):
     class Meta:
         model=LotDetails
         fields=('Name_of_lot','Image_of_Lot','Total_number_of_spaces')
+class PaymentForm(forms.ModelForm):
+    '''
+    we create a form to pick up lot owner's account details
+    '''
+    class Meta:
+        model=PaymentDetails
+        fields=('Bank_name','Account_number')
