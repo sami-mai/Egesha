@@ -4,17 +4,48 @@
 
 <style>
 .checks{
-  padding-top: 10%;
+  padding-top: 5%;
+  padding-left: 28%;
+}
+.btn{
+  background-color: #f5f5f5;
+  border-color: #f5f5f5;
+  color: #000000;
 }
 </style>
 
 
 
-<br><br><br><br><br><br><br>
+<br>
 
-<h4>
-    checkout
-</h4>
+<div class="container checks">
+
+         <form  action="{% url 'lotManager:checkout' %}" method="post" enctype="multipart/form-data" class="form-inline">
+           {%csrf_token%}
+       
+           {% bootstrap_form form%}
+           <input type="submit" class="btn btn-success btn-lg " value="Check-Out">
+         </form>
+
+
+</div>
+
+
+    <div class="container">
+      <h3>Recently Checked Out Cars</h3>
+      
+      {% for carcheckedout in carscheckedout %}
+       
+           
+           <div class="well">{{carcheckedout.car_plate}}</div>
+           
+         
+       {% endfor %}
+    </div>
+    
+
+
+  
 
 
  <!-- bootstrap cdn js link -->

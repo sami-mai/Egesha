@@ -9,7 +9,13 @@ from accounts.models import DriverProfile
 
 class Parked(models.Model):
     '''
-    class for populating details of the car
+    class for populating details of the checked in car
+    '''
+    car_plate = models.CharField(max_length = 30,default = 'KCA101Z',null = True)
+
+class CheckedOut(models.Model):
+    '''
+    class for populating details of the checked out car
     '''
     car_plate = models.CharField(max_length = 30,default = 'KCA101Z',null = True)
     

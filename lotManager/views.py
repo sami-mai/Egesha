@@ -3,8 +3,8 @@ from django.http import HttpResponse,Http404,HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from driver.models import Cardetails
-from .models import Parked
-from .forms import Parkedcars
+from .models import Parked,CheckedOut
+from .forms import Parkedcars,Checkedoutcars
 
 def operator(request):
     cardetails = Cardetails.objects.all()
@@ -17,14 +17,24 @@ def checkin(request):
     if request.method == 'POST':
         form = Parkedcars(request.POST,request.FILES)
         if form.is_valid():
-            parked = form.save(commit=False) 
+            parked = form.save() 
             parked.save()
     else:
         form = Parkedcars()
 
-    return render(request,'lotManager/in.html',{"form":form})
+    carsparked = Parked.objects.all()
+
+    return render(request,'lotManager/in.html',{"form":form,"carsparked":carsparked})
 
 def checkout(request):
-   
+    if request.method == 'POST':
+        form = Checkedoutcars(request.POST,request.FILES)
+        if form.is_valid():
+            checkedout = form.save() 
+            checkedout.save()
+    else:
+        form = Checkedoutcars()
 
-    return render(request,'lotManager/out.html')
+    carscheckedout = CheckedOut.objects.all()
+
+    return render(request,'lotManager/out.html',{"form":form,"carscheckedout":carscheckedout})
