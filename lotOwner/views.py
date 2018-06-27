@@ -29,7 +29,7 @@ def home(request):
         print('no profile')
 
     if request.method == 'POST':
-        form1=OwnerProfileForm(request.POST, request.FILES,instance=current_profile)
+        form1=OwnerProfileForm(request.POST, request.FILES)
         if form1.is_valid():
             user_profile=form1.save(commit=False)
             user_profile.user=request.user

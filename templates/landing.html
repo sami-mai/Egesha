@@ -81,10 +81,13 @@
   <div class="row">
     <img style="float:right; width:500px; height:400px;" src="{%static '/images/undergroundlot.jpg'%}" alt="earn with egesha">
     <div class="well" style="background-color: #D5DFD5; opacity:0.8; width:670px; height:400px; margin-right:500px; ">
-      <h1 class="text-center">testing </h1>
+      <h1 class="text-center"> Let your Lot</h1>
+      <p>
+        Egesha Parking provides businesses, lot owners and operators with tools to manage and measure your parking assets while also providing a platform to communicate parking information directly to drivers.
+      </p>
       <!--  -->
       {%if user.is_authenticated%}
-      <a href="{%url 'lotOwner:Lot' %}" class="btn btn-primary">Lot Owner</a>
+      <a href="{%url 'lotOwner:Lot' %}" class="btn btn-primary text-center">Lot Owner</a>
       <!--  -->
       {%else%}
       <a href="{%url 'login'%}" class="btn btn-primary">Lot Owner</a>
@@ -99,13 +102,13 @@
     <div class="row">
       <img style="float:left; width:500px; height:400px;" src="{%static '/images/parked.jpg'%}" alt="earn with egesha">
       <div class="well" style="background-color: #D5DFD5; opacity:0.8; width:670px; height:400px; margin-left:500px; ">
-        <h1 class="text-center"> Let your Lot</h1>
+        <h1 class="text-center">Manage your Lot</h1>
         <p>
           It's no secret that parking is a major pain point for drivers but what's not as well-documented is the very real impact parking has on urban mobility. Uninformed drivers create more traffic, pollution and have a negative impact on cities when they search
           for parking.
         </p>
         {%if user.is_authenticated%}
-        <a href="{%url 'lotManager:dashboard'%}" class="btn btn-primary">Lot Operation</a>
+        <a href="{%url 'lotManager:operator'%}" class="btn btn-primary">Lot Operation</a>
         <!--  -->
         {%else%}
         <a href="{%url 'login'%}" class="btn btn-primary">Lot Operation</a>
