@@ -101,6 +101,7 @@
 {% endblock %} {% block scripts %}
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 {% bootstrap_javascript %}
 <script>
   var map;
@@ -126,11 +127,6 @@
       zoom: 13
     });
 
-
-
-
-
-
     //we assign a click listener  with the addListener that creates a marker when the user clicks the map
 
     // we create a variable called spots that store the spots that we passed from the view function
@@ -155,8 +151,7 @@
       });
 
     }
-    var contentString = '<div id="content">' + '<h4>Location name</h4>' + name + '<br>' + '<button class = "btn btn-info"><a href = "{% url '
-    driver: edit_profile '%}">book</a></button>' + '</div>';
+    var contentString = '<div id="content">' + '<h4>Location name</h4>' + name + '<br>' + '<button class = "btn btn-info"><a href = "">book</a></button>' + '</div>';
     infowindow = new google.maps.InfoWindow({
       content: contentString
 
@@ -170,11 +165,12 @@
 
   }
 </script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmrKc7FjQwLm9vEtseo5LK7Z6M_1aPm5k&callback=initMap"></script>
 <!--we load the api from the specified api, the async attribute allows the page to
     load as the api loads the call back paramater executes the initMap() function that specifies the latitude and longitude of where the map will
     be centered
   -->
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmrKc7FjQwLm9vEtseo5LK7Z6M_1aPm5k&callback=initMap"></script>
+
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.0/jquery.matchHeight-min.js"></script>
 

@@ -96,6 +96,7 @@ def trigger_payment(request):
     return redirect('/driver/')
 
 def search_location(request):
+    current_user=request.user.id
     search_term=request.GET.get("location")
     spots=list(Location.search(search_term))
 
@@ -107,4 +108,4 @@ def search_location(request):
     spots_json=serializers.serialize('json',spots,cls=DjangoJSONEncoder)
     searched_locations=Location.search(search_term)
 
-    return render (request,'user/search.html',{"coords_json":coords_json,"spots_json":spots_json,"searched_locations":searched_locations})
+    return render(request,'user/search.html',{"coords_json":coords_json,"spots_json":spots_json,"searched_locations":searched_locations,"current_user":current_user})
