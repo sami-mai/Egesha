@@ -8,5 +8,5 @@ class Parkedcars(forms.ModelForm):
 
 class Checkedoutcars(forms.ModelForm):
     class Meta:
-        model = Parked
+        model = CheckedOut
         fields = ['car_plate']

@@ -35,6 +35,6 @@ def checkout(request):
     else:
         form = Checkedoutcars()
 
-    carscheckedout = Parked.objects.all()
+    carscheckedout = CheckedOut.objects.all()
 
     return render(request,'lotManager/out.html',{"form":form,"carscheckedout":carscheckedout})

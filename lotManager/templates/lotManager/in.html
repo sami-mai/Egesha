@@ -4,18 +4,24 @@
 
 <style>
 .checks{
-  padding-top: 10%;
+  padding-top: 5%;
+  padding-left: 28%;
+}
+.btn{
+  background-color: #f5f5f5;
+  border-color: #f5f5f5;
+  color: #000000;
 }
 </style>
 
 
 
-<br><br><br><br><br><br><br>
+<br>
 
 <div class="container checks">
     
 
-           <form  action="" method="post" enctype="multipart/form-data" class="form-inline">
+           <form  action="{% url 'lotManager:checkin' %}" method="post" enctype="multipart/form-data" class="form-inline">
              {%csrf_token%}
          
              {% bootstrap_form form%}
@@ -25,13 +31,16 @@
 
       </div>
 
+      
+
       <div class="container">
+          <h3>Checked In Cars</h3>
         {% for carparked in carsparked %}
-         <div class="row">
+         
              
-             <div class="col-md-4">{{carparked.car_plate}}</div>
+             <div class="well">{{carparked.car_plate}}</div>
              
-           </div>
+           
          {% endfor %}
       </div>
       
